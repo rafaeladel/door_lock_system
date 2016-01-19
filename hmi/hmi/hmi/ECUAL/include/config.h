@@ -1,0 +1,38 @@
+/*
+ * config.h
+ *
+ * Created: 1/3/2016 10:33:50 PM
+ *  Author: Rafael
+ */ 
+
+
+#ifndef CONFIG_H_
+#define CONFIG_H_
+
+#define CONFIG_LCD_DATA_PORT PINB_ADDR
+#define CONFIG_LCD_CONF_PORT PINA_ADDR
+#define CONFIG_LCD_CONF_E_PIN 0
+#define CONFIG_LCD_CONF_RW_PIN 1
+#define CONFIG_LCD_CONF_RS_PIN 2
+
+#define CONFIG_LCD_MODE_4_BIT 1
+
+#define CONFIG_KEYPAD_OUT_PORT PINC_ADDR
+
+#define STATE_DOOR_OPEN 0xa0
+#define STATE_DOOR_CLOSE 0xa1
+#define STATE_CHANGE_PW 0xa2
+#define STATE_ENTER_PW 0xa3
+#define STATE_CORRECT_PW 0xa5
+#define STATE_WRONG_PW 0xa6
+#define STATE_SYS_LOCK 0xa8
+#define STATE_FIRST_RUN 0xa9
+#define STATE_CHECK_PW 0xb0
+#define STATE_CONFIRM_PW 0xb2
+#define STATE_WRONG_CONFIRM_PW 0xb3
+#define STATE_FIRST_RUN_YES 0xb4
+#define STATE_FIRST_RUN_NO 0xb5
+
+#define PW_LENGTH 4
+
+#endif /* CONFIG_H_ */

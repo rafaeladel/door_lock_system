@@ -1,0 +1,1636 @@
+
+hmi.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000740  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000000bc  00800060  00000740  000007d4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000a  0080011c  0080011c  00000890  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000890  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000008c0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001d0  00000000  00000000  000008fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000178e  00000000  00000000  00000acc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000872  00000000  00000000  0000225a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000085e  00000000  00000000  00002acc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003ec  00000000  00000000  0000332c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000049c  00000000  00000000  00003718  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000cce  00000000  00000000  00003bb4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000170  00000000  00000000  00004882  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__ctors_end>
+   4:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+   8:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+   c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  10:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  14:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  18:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  1c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  20:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  24:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  28:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  2c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  30:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  34:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  38:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  3c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  40:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  44:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  48:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  4c:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  50:	0c 94 5b 00 	jmp	0xb6	; 0xb6 <__bad_interrupt>
+  54:	b8 02       	muls	r27, r24
+  56:	c1 02       	muls	r28, r17
+  58:	ca 02       	muls	r28, r26
+  5a:	9c 02       	muls	r25, r28
+  5c:	0a 03       	fmul	r16, r18
+  5e:	ee 02       	muls	r30, r30
+  60:	ff 02       	muls	r31, r31
+  62:	0a 03       	fmul	r16, r18
+  64:	0a 03       	fmul	r16, r18
+  66:	97 02       	muls	r25, r23
+  68:	0a 03       	fmul	r16, r18
+  6a:	0a 03       	fmul	r16, r18
+  6c:	0a 03       	fmul	r16, r18
+  6e:	0a 03       	fmul	r16, r18
+  70:	0a 03       	fmul	r16, r18
+  72:	0a 03       	fmul	r16, r18
+  74:	a4 02       	muls	r26, r20
+  76:	0a 03       	fmul	r16, r18
+  78:	d9 02       	muls	r29, r25
+  7a:	e8 02       	muls	r30, r24
+
+0000007c <__ctors_end>:
+  7c:	11 24       	eor	r1, r1
+  7e:	1f be       	out	0x3f, r1	; 63
+  80:	cf e5       	ldi	r28, 0x5F	; 95
+  82:	d8 e0       	ldi	r29, 0x08	; 8
+  84:	de bf       	out	0x3e, r29	; 62
+  86:	cd bf       	out	0x3d, r28	; 61
+
+00000088 <__do_copy_data>:
+  88:	11 e0       	ldi	r17, 0x01	; 1
+  8a:	a0 e6       	ldi	r26, 0x60	; 96
+  8c:	b0 e0       	ldi	r27, 0x00	; 0
+  8e:	e0 e4       	ldi	r30, 0x40	; 64
+  90:	f7 e0       	ldi	r31, 0x07	; 7
+  92:	02 c0       	rjmp	.+4      	; 0x98 <__do_copy_data+0x10>
+  94:	05 90       	lpm	r0, Z+
+  96:	0d 92       	st	X+, r0
+  98:	ac 31       	cpi	r26, 0x1C	; 28
+  9a:	b1 07       	cpc	r27, r17
+  9c:	d9 f7       	brne	.-10     	; 0x94 <__do_copy_data+0xc>
+
+0000009e <__do_clear_bss>:
+  9e:	21 e0       	ldi	r18, 0x01	; 1
+  a0:	ac e1       	ldi	r26, 0x1C	; 28
+  a2:	b1 e0       	ldi	r27, 0x01	; 1
+  a4:	01 c0       	rjmp	.+2      	; 0xa8 <.do_clear_bss_start>
+
+000000a6 <.do_clear_bss_loop>:
+  a6:	1d 92       	st	X+, r1
+
+000000a8 <.do_clear_bss_start>:
+  a8:	a6 32       	cpi	r26, 0x26	; 38
+  aa:	b2 07       	cpc	r27, r18
+  ac:	e1 f7       	brne	.-8      	; 0xa6 <.do_clear_bss_loop>
+  ae:	0e 94 5d 02 	call	0x4ba	; 0x4ba <main>
+  b2:	0c 94 9e 03 	jmp	0x73c	; 0x73c <_exit>
+
+000000b6 <__bad_interrupt>:
+  b6:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000ba <hmi_check_firstrun>:
+#include <util/delay.h>
+
+char hmi_check_firstrun()
+{
+	char result = '\0';
+	usart_init();
+  ba:	0e 94 7d 03 	call	0x6fa	; 0x6fa <usart_init>
+	usart_transmit(STATE_FIRST_RUN);
+  be:	89 ea       	ldi	r24, 0xA9	; 169
+  c0:	0e 94 89 03 	call	0x712	; 0x712 <usart_transmit>
+	result = usart_recieve();
+  c4:	0e 94 8e 03 	call	0x71c	; 0x71c <usart_recieve>
+	return result == STATE_FIRST_RUN_YES;
+  c8:	91 e0       	ldi	r25, 0x01	; 1
+  ca:	84 3b       	cpi	r24, 0xB4	; 180
+  cc:	09 f0       	breq	.+2      	; 0xd0 <hmi_check_firstrun+0x16>
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+}
+  d0:	89 2f       	mov	r24, r25
+  d2:	08 95       	ret
+
+000000d4 <hmi_uart_send_pw>:
+
+char hmi_uart_send_pw(char* pw)
+{
+  d4:	0f 93       	push	r16
+  d6:	1f 93       	push	r17
+  d8:	cf 93       	push	r28
+  da:	df 93       	push	r29
+  dc:	8c 01       	movw	r16, r24
+	char i;
+	usart_init();
+  de:	0e 94 7d 03 	call	0x6fa	; 0x6fa <usart_init>
+	usart_transmit(STATE_CHECK_PW);
+  e2:	80 eb       	ldi	r24, 0xB0	; 176
+  e4:	0e 94 89 03 	call	0x712	; 0x712 <usart_transmit>
+  e8:	e8 01       	movw	r28, r16
+  ea:	0c 5f       	subi	r16, 0xFC	; 252
+  ec:	1f 4f       	sbci	r17, 0xFF	; 255
+	for(i = 0; i < PW_LENGTH; i++)
+	{
+		usart_transmit(pw[i]);	
+  ee:	89 91       	ld	r24, Y+
+  f0:	0e 94 89 03 	call	0x712	; 0x712 <usart_transmit>
+char hmi_uart_send_pw(char* pw)
+{
+	char i;
+	usart_init();
+	usart_transmit(STATE_CHECK_PW);
+	for(i = 0; i < PW_LENGTH; i++)
+  f4:	c0 17       	cp	r28, r16
+  f6:	d1 07       	cpc	r29, r17
+  f8:	d1 f7       	brne	.-12     	; 0xee <hmi_uart_send_pw+0x1a>
+	{
+		usart_transmit(pw[i]);	
+	}
+	return 1;
+}
+  fa:	81 e0       	ldi	r24, 0x01	; 1
+  fc:	df 91       	pop	r29
+  fe:	cf 91       	pop	r28
+ 100:	1f 91       	pop	r17
+ 102:	0f 91       	pop	r16
+ 104:	08 95       	ret
+
+00000106 <hmi_uart_save_pw>:
+
+
+char hmi_uart_save_pw(char* pw)
+{
+ 106:	0f 93       	push	r16
+ 108:	1f 93       	push	r17
+ 10a:	cf 93       	push	r28
+ 10c:	df 93       	push	r29
+ 10e:	8c 01       	movw	r16, r24
+	char i;
+	usart_init();
+ 110:	0e 94 7d 03 	call	0x6fa	; 0x6fa <usart_init>
+	usart_transmit(STATE_CHANGE_PW);
+ 114:	82 ea       	ldi	r24, 0xA2	; 162
+ 116:	0e 94 89 03 	call	0x712	; 0x712 <usart_transmit>
+ 11a:	e8 01       	movw	r28, r16
+ 11c:	0c 5f       	subi	r16, 0xFC	; 252
+ 11e:	1f 4f       	sbci	r17, 0xFF	; 255
+	for(i = 0; i < PW_LENGTH; i++)
+	{
+		usart_transmit(pw[i]);
+ 120:	89 91       	ld	r24, Y+
+ 122:	0e 94 89 03 	call	0x712	; 0x712 <usart_transmit>
+char hmi_uart_save_pw(char* pw)
+{
+	char i;
+	usart_init();
+	usart_transmit(STATE_CHANGE_PW);
+	for(i = 0; i < PW_LENGTH; i++)
+ 126:	c0 17       	cp	r28, r16
+ 128:	d1 07       	cpc	r29, r17
+ 12a:	d1 f7       	brne	.-12     	; 0x120 <hmi_uart_save_pw+0x1a>
+	{
+		usart_transmit(pw[i]);
+	}
+	return 1;
+}
+ 12c:	81 e0       	ldi	r24, 0x01	; 1
+ 12e:	df 91       	pop	r29
+ 130:	cf 91       	pop	r28
+ 132:	1f 91       	pop	r17
+ 134:	0f 91       	pop	r16
+ 136:	08 95       	ret
+
+00000138 <hmi_uart_check_pw>:
+
+char hmi_uart_check_pw() 
+{
+	char result = '\0';
+	usart_init();
+ 138:	0e 94 7d 03 	call	0x6fa	; 0x6fa <usart_init>
+	result = usart_recieve();
+ 13c:	0e 94 8e 03 	call	0x71c	; 0x71c <usart_recieve>
+	return result;
+}
+ 140:	08 95       	ret
+
+00000142 <hmi_uart_send>:
+
+char hmi_uart_send(char command)
+{
+ 142:	cf 93       	push	r28
+ 144:	c8 2f       	mov	r28, r24
+	usart_init();
+ 146:	0e 94 7d 03 	call	0x6fa	; 0x6fa <usart_init>
+	usart_transmit(command);
+ 14a:	8c 2f       	mov	r24, r28
+ 14c:	0e 94 89 03 	call	0x712	; 0x712 <usart_transmit>
+	return 1;
+}
+ 150:	81 e0       	ldi	r24, 0x01	; 1
+ 152:	cf 91       	pop	r28
+ 154:	08 95       	ret
+
+00000156 <hmi_lcd_put>:
+
+void hmi_lcd_put(char* msg)
+{
+ 156:	cf 93       	push	r28
+ 158:	df 93       	push	r29
+ 15a:	ec 01       	movw	r28, r24
+	init_lcd();
+ 15c:	0e 94 d2 01 	call	0x3a4	; 0x3a4 <init_lcd>
+	lcd_send_cmd(0x01);
+ 160:	81 e0       	ldi	r24, 0x01	; 1
+ 162:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+	lcd_send_string(msg, 0, 0);
+ 166:	40 e0       	ldi	r20, 0x00	; 0
+ 168:	60 e0       	ldi	r22, 0x00	; 0
+ 16a:	ce 01       	movw	r24, r28
+ 16c:	0e 94 13 02 	call	0x426	; 0x426 <lcd_send_string>
+}
+ 170:	df 91       	pop	r29
+ 172:	cf 91       	pop	r28
+ 174:	08 95       	ret
+
+00000176 <hmi_lcd_notify>:
+
+void hmi_lcd_notify(char* notification)
+{
+	hmi_lcd_put(notification);
+ 176:	0e 94 ab 00 	call	0x156	; 0x156 <hmi_lcd_put>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 17a:	2f ef       	ldi	r18, 0xFF	; 255
+ 17c:	89 e6       	ldi	r24, 0x69	; 105
+ 17e:	98 e1       	ldi	r25, 0x18	; 24
+ 180:	21 50       	subi	r18, 0x01	; 1
+ 182:	80 40       	sbci	r24, 0x00	; 0
+ 184:	90 40       	sbci	r25, 0x00	; 0
+ 186:	e1 f7       	brne	.-8      	; 0x180 <hmi_lcd_notify+0xa>
+ 188:	00 c0       	rjmp	.+0      	; 0x18a <hmi_lcd_notify+0x14>
+ 18a:	00 00       	nop
+ 18c:	08 95       	ret
+
+0000018e <hmi_lcd_menu>:
+	_delay_ms(1000);
+}
+
+void hmi_lcd_menu()
+{
+	init_lcd();
+ 18e:	0e 94 d2 01 	call	0x3a4	; 0x3a4 <init_lcd>
+	lcd_send_cmd(0x01);
+ 192:	81 e0       	ldi	r24, 0x01	; 1
+ 194:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+	lcd_send_string("1. Open", 0, 0);
+ 198:	40 e0       	ldi	r20, 0x00	; 0
+ 19a:	60 e0       	ldi	r22, 0x00	; 0
+ 19c:	80 e7       	ldi	r24, 0x70	; 112
+ 19e:	90 e0       	ldi	r25, 0x00	; 0
+ 1a0:	0e 94 13 02 	call	0x426	; 0x426 <lcd_send_string>
+	lcd_send_string("2. Close", 0, 1);
+ 1a4:	41 e0       	ldi	r20, 0x01	; 1
+ 1a6:	60 e0       	ldi	r22, 0x00	; 0
+ 1a8:	88 e7       	ldi	r24, 0x78	; 120
+ 1aa:	90 e0       	ldi	r25, 0x00	; 0
+ 1ac:	0e 94 13 02 	call	0x426	; 0x426 <lcd_send_string>
+	lcd_send_string("3. Change password", 0, 2);
+ 1b0:	42 e0       	ldi	r20, 0x02	; 2
+ 1b2:	60 e0       	ldi	r22, 0x00	; 0
+ 1b4:	81 e8       	ldi	r24, 0x81	; 129
+ 1b6:	90 e0       	ldi	r25, 0x00	; 0
+ 1b8:	0e 94 13 02 	call	0x426	; 0x426 <lcd_send_string>
+ 1bc:	08 95       	ret
+
+000001be <hmi_keypad_get_pw>:
+}
+	
+
+void hmi_keypad_get_pw(char* container)
+{
+ 1be:	0f 93       	push	r16
+ 1c0:	1f 93       	push	r17
+ 1c2:	cf 93       	push	r28
+ 1c4:	df 93       	push	r29
+ 1c6:	08 2f       	mov	r16, r24
+ 1c8:	19 2f       	mov	r17, r25
+	init_keypad();
+ 1ca:	0e 94 0c 01 	call	0x218	; 0x218 <init_keypad>
+	init_lcd();
+ 1ce:	0e 94 d2 01 	call	0x3a4	; 0x3a4 <init_lcd>
+ 1d2:	c0 2f       	mov	r28, r16
+ 1d4:	d1 2f       	mov	r29, r17
+ 1d6:	16 e0       	ldi	r17, 0x06	; 6
+	char i;
+	for(i = 0; i < PW_LENGTH; i++)
+	{
+		
+		do {
+			container[i] = getKey();
+ 1d8:	0e 94 21 01 	call	0x242	; 0x242 <getKey>
+ 1dc:	88 83       	st	Y, r24
+		} while(container[i] == '\0');
+ 1de:	88 23       	and	r24, r24
+ 1e0:	d9 f3       	breq	.-10     	; 0x1d8 <hmi_keypad_get_pw+0x1a>
+		
+		lcd_send_string("*", 6 + i, 2);
+ 1e2:	42 e0       	ldi	r20, 0x02	; 2
+ 1e4:	61 2f       	mov	r22, r17
+ 1e6:	84 e9       	ldi	r24, 0x94	; 148
+ 1e8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ea:	0e 94 13 02 	call	0x426	; 0x426 <lcd_send_string>
+ 1ee:	1f 5f       	subi	r17, 0xFF	; 255
+ 1f0:	21 96       	adiw	r28, 0x01	; 1
+void hmi_keypad_get_pw(char* container)
+{
+	init_keypad();
+	init_lcd();
+	char i;
+	for(i = 0; i < PW_LENGTH; i++)
+ 1f2:	1a 30       	cpi	r17, 0x0A	; 10
+ 1f4:	89 f7       	brne	.-30     	; 0x1d8 <hmi_keypad_get_pw+0x1a>
+		} while(container[i] == '\0');
+		
+		lcd_send_string("*", 6 + i, 2);
+		
+	}
+}
+ 1f6:	df 91       	pop	r29
+ 1f8:	cf 91       	pop	r28
+ 1fa:	1f 91       	pop	r17
+ 1fc:	0f 91       	pop	r16
+ 1fe:	08 95       	ret
+
+00000200 <hmi_keypad_get_order>:
+
+void hmi_keypad_get_order(char* order_ptr)
+{
+ 200:	cf 93       	push	r28
+ 202:	df 93       	push	r29
+ 204:	ec 01       	movw	r28, r24
+	do {
+		*order_ptr = getKey();
+ 206:	0e 94 21 01 	call	0x242	; 0x242 <getKey>
+ 20a:	88 83       	st	Y, r24
+	} while(*order_ptr != '1' && *order_ptr != '2' && *order_ptr != '3');
+ 20c:	81 53       	subi	r24, 0x31	; 49
+ 20e:	83 30       	cpi	r24, 0x03	; 3
+ 210:	d0 f7       	brcc	.-12     	; 0x206 <hmi_keypad_get_order+0x6>
+}
+ 212:	df 91       	pop	r29
+ 214:	cf 91       	pop	r28
+ 216:	08 95       	ret
+
+00000218 <init_keypad>:
+	{'c', '0', '=', '+'}
+};
+
+void init_keypad()
+{
+	set_direction_port(DDR_ADDR(CONFIG_KEYPAD_OUT_PORT), 0xf0);
+ 218:	60 ef       	ldi	r22, 0xF0	; 240
+ 21a:	84 e3       	ldi	r24, 0x34	; 52
+ 21c:	0e 94 66 03 	call	0x6cc	; 0x6cc <set_direction_port>
+	write_port(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT), 0xff);
+ 220:	6f ef       	ldi	r22, 0xFF	; 255
+ 222:	85 e3       	ldi	r24, 0x35	; 53
+ 224:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <write_port>
+ 228:	08 95       	ret
+
+0000022a <getRowIndex>:
+	
+}
+
+char getRowIndex(char row)
+{
+	row = (~row) & 0x0f;
+ 22a:	80 95       	com	r24
+ 22c:	98 2f       	mov	r25, r24
+ 22e:	9f 70       	andi	r25, 0x0F	; 15
+	char index = 0;
+	while(row >>= 1){
+ 230:	96 95       	lsr	r25
+ 232:	29 f0       	breq	.+10     	; 0x23e <getRowIndex+0x14>
+ 234:	80 e0       	ldi	r24, 0x00	; 0
+		index++;
+ 236:	8f 5f       	subi	r24, 0xFF	; 255
+
+char getRowIndex(char row)
+{
+	row = (~row) & 0x0f;
+	char index = 0;
+	while(row >>= 1){
+ 238:	96 95       	lsr	r25
+ 23a:	e9 f7       	brne	.-6      	; 0x236 <getRowIndex+0xc>
+ 23c:	08 95       	ret
+}
+
+char getRowIndex(char row)
+{
+	row = (~row) & 0x0f;
+	char index = 0;
+ 23e:	80 e0       	ldi	r24, 0x00	; 0
+	while(row >>= 1){
+		index++;
+	}
+	return index;
+ 240:	08 95       	ret
+
+00000242 <getKey>:
+	set_direction_port(DDR_ADDR(CONFIG_KEYPAD_OUT_PORT), 0xf0);
+	write_port(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT), 0xff);
+}
+
+char getKey()
+{
+ 242:	df 92       	push	r13
+ 244:	ef 92       	push	r14
+ 246:	ff 92       	push	r15
+ 248:	0f 93       	push	r16
+ 24a:	1f 93       	push	r17
+ 24c:	cf 93       	push	r28
+ 24e:	df 93       	push	r29
+	char* port_ptr = make_pointer(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT));
+ 250:	85 e3       	ldi	r24, 0x35	; 53
+ 252:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <make_pointer>
+	volatile char* pin_ptr = make_pointer(CONFIG_KEYPAD_OUT_PORT);
+ 256:	83 e3       	ldi	r24, 0x33	; 51
+ 258:	0e 94 7b 03 	call	0x6f6	; 0x6f6 <make_pointer>
+ 25c:	8c 01       	movw	r16, r24
+ 25e:	c0 e0       	ldi	r28, 0x00	; 0
+ 260:	d0 e0       	ldi	r29, 0x00	; 0
+	
+	char col = 0, row = 0;
+	for(col = 0; col < 4; col++) {
+		add_to_port(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT), 0xf0);
+		subtract_from_port(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT), (1 << col) << 4);
+ 262:	ee 24       	eor	r14, r14
+ 264:	e3 94       	inc	r14
+ 266:	f1 2c       	mov	r15, r1
+ 268:	dc 2e       	mov	r13, r28
+	char* port_ptr = make_pointer(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT));
+	volatile char* pin_ptr = make_pointer(CONFIG_KEYPAD_OUT_PORT);
+	
+	char col = 0, row = 0;
+	for(col = 0; col < 4; col++) {
+		add_to_port(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT), 0xf0);
+ 26a:	60 ef       	ldi	r22, 0xF0	; 240
+ 26c:	85 e3       	ldi	r24, 0x35	; 53
+ 26e:	0e 94 6e 03 	call	0x6dc	; 0x6dc <add_to_port>
+		subtract_from_port(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT), (1 << col) << 4);
+ 272:	b7 01       	movw	r22, r14
+ 274:	0c 2e       	mov	r0, r28
+ 276:	02 c0       	rjmp	.+4      	; 0x27c <getKey+0x3a>
+ 278:	66 0f       	add	r22, r22
+ 27a:	77 1f       	adc	r23, r23
+ 27c:	0a 94       	dec	r0
+ 27e:	e2 f7       	brpl	.-8      	; 0x278 <getKey+0x36>
+ 280:	62 95       	swap	r22
+ 282:	60 7f       	andi	r22, 0xF0	; 240
+ 284:	85 e3       	ldi	r24, 0x35	; 53
+ 286:	0e 94 74 03 	call	0x6e8	; 0x6e8 <subtract_from_port>
+ 28a:	89 ef       	ldi	r24, 0xF9	; 249
+ 28c:	90 e0       	ldi	r25, 0x00	; 0
+ 28e:	01 97       	sbiw	r24, 0x01	; 1
+ 290:	f1 f7       	brne	.-4      	; 0x28e <getKey+0x4c>
+ 292:	00 c0       	rjmp	.+0      	; 0x294 <getKey+0x52>
+ 294:	00 00       	nop
+		_delay_ms(1);
+		row = *(pin_ptr) & 0x0f;
+ 296:	f8 01       	movw	r30, r16
+ 298:	90 81       	ld	r25, Z
+ 29a:	9f 70       	andi	r25, 0x0F	; 15
+		if(row != 0x0f) {
+ 29c:	9f 30       	cpi	r25, 0x0F	; 15
+ 29e:	31 f0       	breq	.+12     	; 0x2ac <getKey+0x6a>
+			while((*(pin_ptr) & 0x0f) != 0x0F);
+ 2a0:	f8 01       	movw	r30, r16
+ 2a2:	80 81       	ld	r24, Z
+ 2a4:	8f 70       	andi	r24, 0x0F	; 15
+ 2a6:	8f 30       	cpi	r24, 0x0F	; 15
+ 2a8:	d9 f7       	brne	.-10     	; 0x2a0 <getKey+0x5e>
+ 2aa:	06 c0       	rjmp	.+12     	; 0x2b8 <getKey+0x76>
+ 2ac:	21 96       	adiw	r28, 0x01	; 1
+{
+	char* port_ptr = make_pointer(PORT_ADDR(CONFIG_KEYPAD_OUT_PORT));
+	volatile char* pin_ptr = make_pointer(CONFIG_KEYPAD_OUT_PORT);
+	
+	char col = 0, row = 0;
+	for(col = 0; col < 4; col++) {
+ 2ae:	c4 30       	cpi	r28, 0x04	; 4
+ 2b0:	d1 05       	cpc	r29, r1
+ 2b2:	d1 f6       	brne	.-76     	; 0x268 <getKey+0x26>
+	
+	if(col < 4) {
+		row = getRowIndex(row);
+		return keymap[row][col];
+	}
+	return '\0';
+ 2b4:	80 e0       	ldi	r24, 0x00	; 0
+ 2b6:	12 c0       	rjmp	.+36     	; 0x2dc <getKey+0x9a>
+			while((*(pin_ptr) & 0x0f) != 0x0F);
+			break;
+		}
+	}
+	
+	if(col < 4) {
+ 2b8:	f3 e0       	ldi	r31, 0x03	; 3
+ 2ba:	fd 15       	cp	r31, r13
+ 2bc:	70 f0       	brcs	.+28     	; 0x2da <getKey+0x98>
+		row = getRowIndex(row);
+ 2be:	89 2f       	mov	r24, r25
+ 2c0:	0e 94 15 01 	call	0x22a	; 0x22a <getRowIndex>
+		return keymap[row][col];
+ 2c4:	24 e0       	ldi	r18, 0x04	; 4
+ 2c6:	82 9f       	mul	r24, r18
+ 2c8:	c0 01       	movw	r24, r0
+ 2ca:	11 24       	eor	r1, r1
+ 2cc:	fc 01       	movw	r30, r24
+ 2ce:	ed 0d       	add	r30, r13
+ 2d0:	f1 1d       	adc	r31, r1
+ 2d2:	e0 5a       	subi	r30, 0xA0	; 160
+ 2d4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2d6:	80 81       	ld	r24, Z
+ 2d8:	01 c0       	rjmp	.+2      	; 0x2dc <getKey+0x9a>
+	}
+	return '\0';
+ 2da:	80 e0       	ldi	r24, 0x00	; 0
+	
+}
+ 2dc:	df 91       	pop	r29
+ 2de:	cf 91       	pop	r28
+ 2e0:	1f 91       	pop	r17
+ 2e2:	0f 91       	pop	r16
+ 2e4:	ff 90       	pop	r15
+ 2e6:	ef 90       	pop	r14
+ 2e8:	df 90       	pop	r13
+ 2ea:	08 95       	ret
+
+000002ec <set_control_reg>:
+	lcd_send_cmd(0x0c);
+		
+}
+
+void set_control_reg(char reg)
+{
+ 2ec:	cf 93       	push	r28
+ 2ee:	c8 2f       	mov	r28, r24
+	set_direction_pin(DDR_ADDR(CONFIG_LCD_CONF_PORT), CONFIG_LCD_CONF_RS_PIN, 1);
+ 2f0:	41 e0       	ldi	r20, 0x01	; 1
+ 2f2:	62 e0       	ldi	r22, 0x02	; 2
+ 2f4:	8a e3       	ldi	r24, 0x3A	; 58
+ 2f6:	0e 94 2c 03 	call	0x658	; 0x658 <set_direction_pin>
+	write_pin(PORT_ADDR(CONFIG_LCD_CONF_PORT), CONFIG_LCD_CONF_RS_PIN, reg);
+ 2fa:	4c 2f       	mov	r20, r28
+ 2fc:	62 e0       	ldi	r22, 0x02	; 2
+ 2fe:	8b e3       	ldi	r24, 0x3B	; 59
+ 300:	0e 94 49 03 	call	0x692	; 0x692 <write_pin>
+}
+ 304:	cf 91       	pop	r28
+ 306:	08 95       	ret
+
+00000308 <set_lcd_dir>:
+
+void set_lcd_dir(char dir)
+{
+ 308:	cf 93       	push	r28
+ 30a:	c8 2f       	mov	r28, r24
+	set_direction_pin(DDR_ADDR(CONFIG_LCD_CONF_PORT), CONFIG_LCD_CONF_RW_PIN, 1);
+ 30c:	41 e0       	ldi	r20, 0x01	; 1
+ 30e:	61 e0       	ldi	r22, 0x01	; 1
+ 310:	8a e3       	ldi	r24, 0x3A	; 58
+ 312:	0e 94 2c 03 	call	0x658	; 0x658 <set_direction_pin>
+	write_pin(PORT_ADDR(CONFIG_LCD_CONF_PORT), CONFIG_LCD_CONF_RW_PIN, dir);
+ 316:	4c 2f       	mov	r20, r28
+ 318:	61 e0       	ldi	r22, 0x01	; 1
+ 31a:	8b e3       	ldi	r24, 0x3B	; 59
+ 31c:	0e 94 49 03 	call	0x692	; 0x692 <write_pin>
+}
+ 320:	cf 91       	pop	r28
+ 322:	08 95       	ret
+
+00000324 <set_lcd_enable>:
+
+void set_lcd_enable(char is_enabled)
+{
+ 324:	cf 93       	push	r28
+ 326:	c8 2f       	mov	r28, r24
+	set_direction_pin(DDR_ADDR(CONFIG_LCD_CONF_PORT), CONFIG_LCD_CONF_E_PIN, 1);
+ 328:	41 e0       	ldi	r20, 0x01	; 1
+ 32a:	60 e0       	ldi	r22, 0x00	; 0
+ 32c:	8a e3       	ldi	r24, 0x3A	; 58
+ 32e:	0e 94 2c 03 	call	0x658	; 0x658 <set_direction_pin>
+	write_pin(PORT_ADDR(CONFIG_LCD_CONF_PORT), CONFIG_LCD_CONF_E_PIN, is_enabled);
+ 332:	4c 2f       	mov	r20, r28
+ 334:	60 e0       	ldi	r22, 0x00	; 0
+ 336:	8b e3       	ldi	r24, 0x3B	; 59
+ 338:	0e 94 49 03 	call	0x692	; 0x692 <write_pin>
+}
+ 33c:	cf 91       	pop	r28
+ 33e:	08 95       	ret
+
+00000340 <lcd_send>:
+	}
+}
+
+void lcd_send(char c)
+{
+	write_port(PORT_ADDR(CONFIG_LCD_DATA_PORT), c);
+ 340:	68 2f       	mov	r22, r24
+ 342:	88 e3       	ldi	r24, 0x38	; 56
+ 344:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <write_port>
+ 348:	08 95       	ret
+
+0000034a <lcd_save>:
+}
+
+void lcd_save()
+{
+	set_lcd_enable(0);
+ 34a:	80 e0       	ldi	r24, 0x00	; 0
+ 34c:	0e 94 92 01 	call	0x324	; 0x324 <set_lcd_enable>
+ 350:	83 ec       	ldi	r24, 0xC3	; 195
+ 352:	99 e0       	ldi	r25, 0x09	; 9
+ 354:	01 97       	sbiw	r24, 0x01	; 1
+ 356:	f1 f7       	brne	.-4      	; 0x354 <lcd_save+0xa>
+ 358:	00 c0       	rjmp	.+0      	; 0x35a <lcd_save+0x10>
+ 35a:	00 00       	nop
+	_delay_ms(10);
+	set_lcd_enable(1);	
+ 35c:	81 e0       	ldi	r24, 0x01	; 1
+ 35e:	0e 94 92 01 	call	0x324	; 0x324 <set_lcd_enable>
+ 362:	83 ec       	ldi	r24, 0xC3	; 195
+ 364:	99 e0       	ldi	r25, 0x09	; 9
+ 366:	01 97       	sbiw	r24, 0x01	; 1
+ 368:	f1 f7       	brne	.-4      	; 0x366 <lcd_save+0x1c>
+ 36a:	00 c0       	rjmp	.+0      	; 0x36c <lcd_save+0x22>
+ 36c:	00 00       	nop
+	_delay_ms(10);
+	set_lcd_enable(0);
+ 36e:	80 e0       	ldi	r24, 0x00	; 0
+ 370:	0e 94 92 01 	call	0x324	; 0x324 <set_lcd_enable>
+ 374:	08 95       	ret
+
+00000376 <lcd_send_cmd>:
+	set_direction_pin(DDR_ADDR(CONFIG_LCD_CONF_PORT), CONFIG_LCD_CONF_E_PIN, 1);
+	write_pin(PORT_ADDR(CONFIG_LCD_CONF_PORT), CONFIG_LCD_CONF_E_PIN, is_enabled);
+}
+
+void lcd_send_cmd(char cmd)
+{
+ 376:	cf 93       	push	r28
+ 378:	c8 2f       	mov	r28, r24
+	set_lcd_dir(0);
+ 37a:	80 e0       	ldi	r24, 0x00	; 0
+ 37c:	0e 94 84 01 	call	0x308	; 0x308 <set_lcd_dir>
+	set_control_reg(0);
+ 380:	80 e0       	ldi	r24, 0x00	; 0
+ 382:	0e 94 76 01 	call	0x2ec	; 0x2ec <set_control_reg>
+	
+	#if defined(CONFIG_LCD_MODE_4_BIT) && (CONFIG_LCD_MODE_4_BIT == 1)
+	lcd_send(cmd & 0xf0);
+ 386:	8c 2f       	mov	r24, r28
+ 388:	80 7f       	andi	r24, 0xF0	; 240
+ 38a:	0e 94 a0 01 	call	0x340	; 0x340 <lcd_send>
+	lcd_save();
+ 38e:	0e 94 a5 01 	call	0x34a	; 0x34a <lcd_save>
+	
+	lcd_send((cmd & 0x0f) << 4);
+ 392:	8c 2f       	mov	r24, r28
+ 394:	82 95       	swap	r24
+ 396:	80 7f       	andi	r24, 0xF0	; 240
+ 398:	0e 94 a0 01 	call	0x340	; 0x340 <lcd_send>
+	lcd_save();
+ 39c:	0e 94 a5 01 	call	0x34a	; 0x34a <lcd_save>
+	#else 
+	lcd_send(cmd);
+	lcd_save();
+	#endif
+}
+ 3a0:	cf 91       	pop	r28
+ 3a2:	08 95       	ret
+
+000003a4 <init_lcd>:
+
+#include <util/delay.h>
+
+void init_lcd()
+{
+	set_direction_port(DDR_ADDR(CONFIG_LCD_CONF_PORT), 0xff);
+ 3a4:	6f ef       	ldi	r22, 0xFF	; 255
+ 3a6:	8a e3       	ldi	r24, 0x3A	; 58
+ 3a8:	0e 94 66 03 	call	0x6cc	; 0x6cc <set_direction_port>
+	set_direction_port(DDR_ADDR(CONFIG_LCD_DATA_PORT), 0xff);
+ 3ac:	6f ef       	ldi	r22, 0xFF	; 255
+ 3ae:	87 e3       	ldi	r24, 0x37	; 55
+ 3b0:	0e 94 66 03 	call	0x6cc	; 0x6cc <set_direction_port>
+	
+	#if defined(CONFIG_LCD_MODE_4_BIT) && (CONFIG_LCD_MODE_4_BIT == 1)
+	lcd_send_cmd(0x02);
+ 3b4:	82 e0       	ldi	r24, 0x02	; 2
+ 3b6:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+	lcd_send_cmd(0x28);
+ 3ba:	88 e2       	ldi	r24, 0x28	; 40
+ 3bc:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+	#else
+	lcd_send_cmd(0x38);
+	#endif
+	lcd_send_cmd(0x0c);
+ 3c0:	8c e0       	ldi	r24, 0x0C	; 12
+ 3c2:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+ 3c6:	08 95       	ret
+
+000003c8 <lcd_set_pos_xy>:
+	}
+}
+
+void lcd_set_pos_xy(char x, char y)
+{
+	switch(y) {
+ 3c8:	61 30       	cpi	r22, 0x01	; 1
+ 3ca:	51 f0       	breq	.+20     	; 0x3e0 <lcd_set_pos_xy+0x18>
+ 3cc:	28 f0       	brcs	.+10     	; 0x3d8 <lcd_set_pos_xy+0x10>
+ 3ce:	62 30       	cpi	r22, 0x02	; 2
+ 3d0:	59 f0       	breq	.+22     	; 0x3e8 <lcd_set_pos_xy+0x20>
+ 3d2:	63 30       	cpi	r22, 0x03	; 3
+ 3d4:	69 f0       	breq	.+26     	; 0x3f0 <lcd_set_pos_xy+0x28>
+ 3d6:	08 95       	ret
+		case 0: lcd_send_cmd(0x80 + x); break;
+ 3d8:	80 58       	subi	r24, 0x80	; 128
+ 3da:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+ 3de:	08 95       	ret
+		case 1: lcd_send_cmd(0x80 + 0x40 + x); break;
+ 3e0:	80 54       	subi	r24, 0x40	; 64
+ 3e2:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+ 3e6:	08 95       	ret
+		case 2: lcd_send_cmd(0x80 + 0x14 + x); break;
+ 3e8:	8c 56       	subi	r24, 0x6C	; 108
+ 3ea:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+ 3ee:	08 95       	ret
+		case 3: lcd_send_cmd(0x80 + 0x54 + x); break;
+ 3f0:	8c 52       	subi	r24, 0x2C	; 44
+ 3f2:	0e 94 bb 01 	call	0x376	; 0x376 <lcd_send_cmd>
+ 3f6:	08 95       	ret
+
+000003f8 <lcd_send_char>:
+	lcd_save();
+	#endif
+}
+
+void lcd_send_char(char c)
+{
+ 3f8:	cf 93       	push	r28
+ 3fa:	c8 2f       	mov	r28, r24
+	set_lcd_dir(0);
+ 3fc:	80 e0       	ldi	r24, 0x00	; 0
+ 3fe:	0e 94 84 01 	call	0x308	; 0x308 <set_lcd_dir>
+	set_control_reg(1);
+ 402:	81 e0       	ldi	r24, 0x01	; 1
+ 404:	0e 94 76 01 	call	0x2ec	; 0x2ec <set_control_reg>
+	
+	#if defined(CONFIG_LCD_MODE_4_BIT) && (CONFIG_LCD_MODE_4_BIT == 1)
+	lcd_send(c & 0xf0);
+ 408:	8c 2f       	mov	r24, r28
+ 40a:	80 7f       	andi	r24, 0xF0	; 240
+ 40c:	0e 94 a0 01 	call	0x340	; 0x340 <lcd_send>
+	lcd_save();
+ 410:	0e 94 a5 01 	call	0x34a	; 0x34a <lcd_save>
+	
+	lcd_send((c & 0x0f) << 4);
+ 414:	8c 2f       	mov	r24, r28
+ 416:	82 95       	swap	r24
+ 418:	80 7f       	andi	r24, 0xF0	; 240
+ 41a:	0e 94 a0 01 	call	0x340	; 0x340 <lcd_send>
+	lcd_save();
+ 41e:	0e 94 a5 01 	call	0x34a	; 0x34a <lcd_save>
+	#else
+	lcd_send(c);
+	lcd_save();
+	#endif
+}
+ 422:	cf 91       	pop	r28
+ 424:	08 95       	ret
+
+00000426 <lcd_send_string>:
+
+void lcd_send_string(char* str, char x, char y)
+{
+ 426:	0f 93       	push	r16
+ 428:	1f 93       	push	r17
+ 42a:	cf 93       	push	r28
+ 42c:	8c 01       	movw	r16, r24
+ 42e:	86 2f       	mov	r24, r22
+	lcd_set_pos_xy(x, y);
+ 430:	64 2f       	mov	r22, r20
+ 432:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <lcd_set_pos_xy>
+	char i = 0;
+	while(str[i] != '\0') {
+ 436:	f8 01       	movw	r30, r16
+ 438:	80 81       	ld	r24, Z
+ 43a:	88 23       	and	r24, r24
+ 43c:	51 f0       	breq	.+20     	; 0x452 <lcd_send_string+0x2c>
+ 43e:	c0 e0       	ldi	r28, 0x00	; 0
+		lcd_send_char(str[i++]);
+ 440:	cf 5f       	subi	r28, 0xFF	; 255
+ 442:	0e 94 fc 01 	call	0x3f8	; 0x3f8 <lcd_send_char>
+
+void lcd_send_string(char* str, char x, char y)
+{
+	lcd_set_pos_xy(x, y);
+	char i = 0;
+	while(str[i] != '\0') {
+ 446:	f8 01       	movw	r30, r16
+ 448:	ec 0f       	add	r30, r28
+ 44a:	f1 1d       	adc	r31, r1
+ 44c:	80 81       	ld	r24, Z
+ 44e:	81 11       	cpse	r24, r1
+ 450:	f7 cf       	rjmp	.-18     	; 0x440 <lcd_send_string+0x1a>
+		lcd_send_char(str[i++]);
+	}
+}
+ 452:	cf 91       	pop	r28
+ 454:	1f 91       	pop	r17
+ 456:	0f 91       	pop	r16
+ 458:	08 95       	ret
+
+0000045a <enter_pw>:
+	
+}
+
+void enter_pw()
+{
+	hmi_keypad_get_pw(pw);
+ 45a:	82 e2       	ldi	r24, 0x22	; 34
+ 45c:	91 e0       	ldi	r25, 0x01	; 1
+ 45e:	0e 94 df 00 	call	0x1be	; 0x1be <hmi_keypad_get_pw>
+	hmi_uart_send_pw(pw);	
+ 462:	82 e2       	ldi	r24, 0x22	; 34
+ 464:	91 e0       	ldi	r25, 0x01	; 1
+ 466:	0e 94 6a 00 	call	0xd4	; 0xd4 <hmi_uart_send_pw>
+ 46a:	08 95       	ret
+
+0000046c <check_pw>:
+}
+
+char check_pw()
+{
+	char result = '\0';
+	result = hmi_uart_check_pw(pw);
+ 46c:	82 e2       	ldi	r24, 0x22	; 34
+ 46e:	91 e0       	ldi	r25, 0x01	; 1
+ 470:	0e 94 9c 00 	call	0x138	; 0x138 <hmi_uart_check_pw>
+	return result;
+}
+ 474:	08 95       	ret
+
+00000476 <enter_new_pw>:
+
+void enter_new_pw()
+{
+	hmi_keypad_get_pw(pw);
+ 476:	82 e2       	ldi	r24, 0x22	; 34
+ 478:	91 e0       	ldi	r25, 0x01	; 1
+ 47a:	0e 94 df 00 	call	0x1be	; 0x1be <hmi_keypad_get_pw>
+ 47e:	08 95       	ret
+
+00000480 <enter_confirm_pw>:
+}
+
+char enter_confirm_pw()
+{
+	char i;
+	hmi_keypad_get_pw(confirm_pw);
+ 480:	8e e1       	ldi	r24, 0x1E	; 30
+ 482:	91 e0       	ldi	r25, 0x01	; 1
+ 484:	0e 94 df 00 	call	0x1be	; 0x1be <hmi_keypad_get_pw>
+	for(i = 0; i < PW_LENGTH; i++)
+	{
+		if(pw[i] != confirm_pw[i]){
+ 488:	90 91 22 01 	lds	r25, 0x0122
+ 48c:	80 91 1e 01 	lds	r24, 0x011E
+ 490:	98 13       	cpse	r25, r24
+ 492:	0f c0       	rjmp	.+30     	; 0x4b2 <enter_confirm_pw+0x32>
+ 494:	e3 e2       	ldi	r30, 0x23	; 35
+ 496:	f1 e0       	ldi	r31, 0x01	; 1
+ 498:	af e1       	ldi	r26, 0x1F	; 31
+ 49a:	b1 e0       	ldi	r27, 0x01	; 1
+ 49c:	26 e2       	ldi	r18, 0x26	; 38
+ 49e:	31 e0       	ldi	r19, 0x01	; 1
+ 4a0:	91 91       	ld	r25, Z+
+ 4a2:	8d 91       	ld	r24, X+
+ 4a4:	98 13       	cpse	r25, r24
+ 4a6:	07 c0       	rjmp	.+14     	; 0x4b6 <enter_confirm_pw+0x36>
+
+char enter_confirm_pw()
+{
+	char i;
+	hmi_keypad_get_pw(confirm_pw);
+	for(i = 0; i < PW_LENGTH; i++)
+ 4a8:	e2 17       	cp	r30, r18
+ 4aa:	f3 07       	cpc	r31, r19
+ 4ac:	c9 f7       	brne	.-14     	; 0x4a0 <enter_confirm_pw+0x20>
+	{
+		if(pw[i] != confirm_pw[i]){
+			return 0;
+		}
+	}
+	return 1;
+ 4ae:	81 e0       	ldi	r24, 0x01	; 1
+ 4b0:	08 95       	ret
+	char i;
+	hmi_keypad_get_pw(confirm_pw);
+	for(i = 0; i < PW_LENGTH; i++)
+	{
+		if(pw[i] != confirm_pw[i]){
+			return 0;
+ 4b2:	80 e0       	ldi	r24, 0x00	; 0
+ 4b4:	08 95       	ret
+ 4b6:	80 e0       	ldi	r24, 0x00	; 0
+		}
+	}
+	return 1;
+ 4b8:	08 95       	ret
+
+000004ba <main>:
+char check_pw();
+void enter_new_pw();
+char enter_confirm_pw();
+
+int main(void)
+{
+ 4ba:	8f 92       	push	r8
+ 4bc:	9f 92       	push	r9
+ 4be:	af 92       	push	r10
+ 4c0:	bf 92       	push	r11
+ 4c2:	cf 92       	push	r12
+ 4c4:	df 92       	push	r13
+ 4c6:	ef 92       	push	r14
+ 4c8:	ff 92       	push	r15
+ 4ca:	0f 93       	push	r16
+ 4cc:	1f 93       	push	r17
+ 4ce:	cf 93       	push	r28
+ 4d0:	df 93       	push	r29
+	//3. If no  -> Enter password
+	//3a.		   Compare password
+	//3b.				If yes -> show menu
+	//3c.				If no -> show error, repeate
+	
+	char state = STATE_FIRST_RUN;
+ 4d2:	c9 ea       	ldi	r28, 0xA9	; 169
+	char prev_state = '\0';
+ 4d4:	d0 e0       	ldi	r29, 0x00	; 0
+				}
+			break;
+			
+			case STATE_WRONG_PW:
+				hmi_lcd_notify(MSG_INVALID_PW);
+				state = STATE_ENTER_PW;
+ 4d6:	03 ea       	ldi	r16, 0xA3	; 163
+			
+			case STATE_CORRECT_PW:
+				hmi_lcd_menu();
+				hmi_keypad_get_order(&order);
+				if(order == '1') {
+					state = STATE_DOOR_OPEN;
+ 4d8:	0f 2e       	mov	r0, r31
+ 4da:	f0 ea       	ldi	r31, 0xA0	; 160
+ 4dc:	ef 2e       	mov	r14, r31
+ 4de:	f0 2d       	mov	r31, r0
+				} else if(order == '2') {
+					state = STATE_DOOR_CLOSE;
+ 4e0:	0f 2e       	mov	r0, r31
+ 4e2:	f1 ea       	ldi	r31, 0xA1	; 161
+ 4e4:	df 2e       	mov	r13, r31
+ 4e6:	f0 2d       	mov	r31, r0
+				} else if(order == '3') {
+					state = STATE_CHANGE_PW;
+ 4e8:	0f 2e       	mov	r0, r31
+ 4ea:	f2 ea       	ldi	r31, 0xA2	; 162
+ 4ec:	ff 2e       	mov	r15, r31
+ 4ee:	f0 2d       	mov	r31, r0
+				if(enter_confirm_pw()) {
+					hmi_uart_save_pw(pw);
+					prev_state = '\0';
+					state = STATE_CORRECT_PW;
+				} else {
+					state = STATE_WRONG_CONFIRM_PW;
+ 4f0:	0f 2e       	mov	r0, r31
+ 4f2:	f3 eb       	ldi	r31, 0xB3	; 179
+ 4f4:	bf 2e       	mov	r11, r31
+ 4f6:	f0 2d       	mov	r31, r0
+			
+			case STATE_CONFIRM_PW:
+				hmi_lcd_put(MSG_CONFIRM_PW);
+				if(enter_confirm_pw()) {
+					hmi_uart_save_pw(pw);
+					prev_state = '\0';
+ 4f8:	91 2c       	mov	r9, r1
+					state = STATE_CORRECT_PW;
+ 4fa:	15 ea       	ldi	r17, 0xA5	; 165
+					state = STATE_ENTER_PW;
+					continue;
+				}
+				hmi_lcd_put(MSG_ENTER_NEW_PW);
+				enter_new_pw();
+				state = STATE_CONFIRM_PW;	
+ 4fc:	0f 2e       	mov	r0, r31
+ 4fe:	f2 eb       	ldi	r31, 0xB2	; 178
+ 500:	af 2e       	mov	r10, r31
+ 502:	f0 2d       	mov	r31, r0
+			case STATE_CHECK_PW:
+				check_result = check_pw();
+				if(check_result == STATE_CORRECT_PW){
+					state = prev_state != '\0' ? prev_state : STATE_CORRECT_PW;
+				} else if(check_result == STATE_WRONG_PW){
+					state = STATE_WRONG_PW;
+ 504:	0f 2e       	mov	r0, r31
+ 506:	f6 ea       	ldi	r31, 0xA6	; 166
+ 508:	8f 2e       	mov	r8, r31
+ 50a:	f0 2d       	mov	r31, r0
+			break;
+			
+			case STATE_ENTER_PW:
+				hmi_lcd_put(MSG_ENTER_PW);
+				enter_pw();
+				state = STATE_CHECK_PW;
+ 50c:	0f 2e       	mov	r0, r31
+ 50e:	f0 eb       	ldi	r31, 0xB0	; 176
+ 510:	cf 2e       	mov	r12, r31
+ 512:	f0 2d       	mov	r31, r0
+	
+	char state = STATE_FIRST_RUN;
+	char prev_state = '\0';
+	
+	while(state != STATE_SYS_LOCK) {
+		switch(state) {
+ 514:	4c 2f       	mov	r20, r28
+ 516:	50 e0       	ldi	r21, 0x00	; 0
+ 518:	40 5a       	subi	r20, 0xA0	; 160
+ 51a:	51 09       	sbc	r21, r1
+ 51c:	44 31       	cpi	r20, 0x14	; 20
+ 51e:	51 05       	cpc	r21, r1
+ 520:	08 f0       	brcs	.+2      	; 0x524 <main+0x6a>
+ 522:	78 c0       	rjmp	.+240    	; 0x614 <main+0x15a>
+ 524:	fa 01       	movw	r30, r20
+ 526:	e6 5d       	subi	r30, 0xD6	; 214
+ 528:	ff 4f       	sbci	r31, 0xFF	; 255
+ 52a:	0c 94 98 03 	jmp	0x730	; 0x730 <__tablejump2__>
+			case STATE_FIRST_RUN:
+				if(hmi_check_firstrun()) {
+ 52e:	0e 94 5d 00 	call	0xba	; 0xba <hmi_check_firstrun>
+ 532:	81 11       	cpse	r24, r1
+ 534:	75 c0       	rjmp	.+234    	; 0x620 <main+0x166>
+ 536:	72 c0       	rjmp	.+228    	; 0x61c <main+0x162>
+					state = STATE_ENTER_PW;
+				}
+			break;
+			
+			case STATE_ENTER_PW:
+				hmi_lcd_put(MSG_ENTER_PW);
+ 538:	86 e9       	ldi	r24, 0x96	; 150
+ 53a:	90 e0       	ldi	r25, 0x00	; 0
+ 53c:	0e 94 ab 00 	call	0x156	; 0x156 <hmi_lcd_put>
+				enter_pw();
+ 540:	0e 94 2d 02 	call	0x45a	; 0x45a <enter_pw>
+				state = STATE_CHECK_PW;
+ 544:	cc 2d       	mov	r28, r12
+			break;
+ 546:	e6 cf       	rjmp	.-52     	; 0x514 <main+0x5a>
+			
+			case STATE_CHECK_PW:
+				check_result = check_pw();
+ 548:	0e 94 36 02 	call	0x46c	; 0x46c <check_pw>
+ 54c:	80 93 1c 01 	sts	0x011C, r24
+				if(check_result == STATE_CORRECT_PW){
+ 550:	85 3a       	cpi	r24, 0xA5	; 165
+ 552:	21 f4       	brne	.+8      	; 0x55c <main+0xa2>
+					state = prev_state != '\0' ? prev_state : STATE_CORRECT_PW;
+ 554:	d1 11       	cpse	r29, r1
+ 556:	59 c0       	rjmp	.+178    	; 0x60a <main+0x150>
+ 558:	c1 2f       	mov	r28, r17
+ 55a:	dc cf       	rjmp	.-72     	; 0x514 <main+0x5a>
+				} else if(check_result == STATE_WRONG_PW){
+ 55c:	86 3a       	cpi	r24, 0xA6	; 166
+ 55e:	09 f4       	brne	.+2      	; 0x562 <main+0xa8>
+ 560:	61 c0       	rjmp	.+194    	; 0x624 <main+0x16a>
+					state = STATE_WRONG_PW;
+				} else if(check_result == STATE_SYS_LOCK) {
+ 562:	88 3a       	cpi	r24, 0xA8	; 168
+ 564:	b9 f6       	brne	.-82     	; 0x514 <main+0x5a>
+					hmi_lcd_put(MSG_SYS_LOCK);
+ 566:	86 ea       	ldi	r24, 0xA6	; 166
+ 568:	90 e0       	ldi	r25, 0x00	; 0
+ 56a:	0e 94 ab 00 	call	0x156	; 0x156 <hmi_lcd_put>
+ 56e:	65 c0       	rjmp	.+202    	; 0x63a <main+0x180>
+					state = STATE_SYS_LOCK;
+				}
+			break;
+			
+			case STATE_DOOR_OPEN:
+				hmi_uart_send(STATE_DOOR_OPEN);
+ 570:	8e 2d       	mov	r24, r14
+ 572:	0e 94 a1 00 	call	0x142	; 0x142 <hmi_uart_send>
+				hmi_lcd_notify(MSG_DOOR_OPEN);
+ 576:	83 eb       	ldi	r24, 0xB3	; 179
+ 578:	90 e0       	ldi	r25, 0x00	; 0
+ 57a:	0e 94 bb 00 	call	0x176	; 0x176 <hmi_lcd_notify>
+				state = STATE_CORRECT_PW;
+ 57e:	c1 2f       	mov	r28, r17
+			break;
+ 580:	c9 cf       	rjmp	.-110    	; 0x514 <main+0x5a>
+			
+			case STATE_DOOR_CLOSE:
+				hmi_uart_send(STATE_DOOR_CLOSE);
+ 582:	8d 2d       	mov	r24, r13
+ 584:	0e 94 a1 00 	call	0x142	; 0x142 <hmi_uart_send>
+				hmi_lcd_notify(MSG_DOOR_CLOSE);
+ 588:	80 ec       	ldi	r24, 0xC0	; 192
+ 58a:	90 e0       	ldi	r25, 0x00	; 0
+ 58c:	0e 94 bb 00 	call	0x176	; 0x176 <hmi_lcd_notify>
+				state = STATE_CORRECT_PW;
+ 590:	c1 2f       	mov	r28, r17
+			break;
+ 592:	c0 cf       	rjmp	.-128    	; 0x514 <main+0x5a>
+			
+			case STATE_CHANGE_PW:
+				if(!hmi_check_firstrun() && prev_state == '\0') {
+ 594:	0e 94 5d 00 	call	0xba	; 0xba <hmi_check_firstrun>
+ 598:	81 11       	cpse	r24, r1
+ 59a:	03 c0       	rjmp	.+6      	; 0x5a2 <main+0xe8>
+ 59c:	dd 23       	and	r29, r29
+ 59e:	09 f4       	brne	.+2      	; 0x5a2 <main+0xe8>
+ 5a0:	43 c0       	rjmp	.+134    	; 0x628 <main+0x16e>
+					prev_state = state;
+					state = STATE_ENTER_PW;
+					continue;
+				}
+				hmi_lcd_put(MSG_ENTER_NEW_PW);
+ 5a2:	8d ec       	ldi	r24, 0xCD	; 205
+ 5a4:	90 e0       	ldi	r25, 0x00	; 0
+ 5a6:	0e 94 ab 00 	call	0x156	; 0x156 <hmi_lcd_put>
+				enter_new_pw();
+ 5aa:	0e 94 3b 02 	call	0x476	; 0x476 <enter_new_pw>
+				state = STATE_CONFIRM_PW;	
+ 5ae:	ca 2d       	mov	r28, r10
+			break;
+ 5b0:	b1 cf       	rjmp	.-158    	; 0x514 <main+0x5a>
+			
+			case STATE_CONFIRM_PW:
+				hmi_lcd_put(MSG_CONFIRM_PW);
+ 5b2:	81 ee       	ldi	r24, 0xE1	; 225
+ 5b4:	90 e0       	ldi	r25, 0x00	; 0
+ 5b6:	0e 94 ab 00 	call	0x156	; 0x156 <hmi_lcd_put>
+				if(enter_confirm_pw()) {
+ 5ba:	0e 94 40 02 	call	0x480	; 0x480 <enter_confirm_pw>
+ 5be:	88 23       	and	r24, r24
+ 5c0:	b1 f1       	breq	.+108    	; 0x62e <main+0x174>
+					hmi_uart_save_pw(pw);
+ 5c2:	82 e2       	ldi	r24, 0x22	; 34
+ 5c4:	91 e0       	ldi	r25, 0x01	; 1
+ 5c6:	0e 94 83 00 	call	0x106	; 0x106 <hmi_uart_save_pw>
+					prev_state = '\0';
+ 5ca:	d9 2d       	mov	r29, r9
+					state = STATE_CORRECT_PW;
+ 5cc:	c1 2f       	mov	r28, r17
+ 5ce:	a2 cf       	rjmp	.-188    	; 0x514 <main+0x5a>
+					state = STATE_WRONG_CONFIRM_PW;
+				}
+			break;
+			
+			case STATE_WRONG_CONFIRM_PW:
+				hmi_lcd_notify(MSG_CONFIRM_WRONG);
+ 5d0:	83 ef       	ldi	r24, 0xF3	; 243
+ 5d2:	90 e0       	ldi	r25, 0x00	; 0
+ 5d4:	0e 94 bb 00 	call	0x176	; 0x176 <hmi_lcd_notify>
+				state = STATE_CHANGE_PW;
+ 5d8:	cf 2d       	mov	r28, r15
+			break;
+ 5da:	9c cf       	rjmp	.-200    	; 0x514 <main+0x5a>
+			
+			case STATE_CORRECT_PW:
+				hmi_lcd_menu();
+ 5dc:	0e 94 c7 00 	call	0x18e	; 0x18e <hmi_lcd_menu>
+				hmi_keypad_get_order(&order);
+ 5e0:	8d e1       	ldi	r24, 0x1D	; 29
+ 5e2:	91 e0       	ldi	r25, 0x01	; 1
+ 5e4:	0e 94 00 01 	call	0x200	; 0x200 <hmi_keypad_get_order>
+				if(order == '1') {
+ 5e8:	80 91 1d 01 	lds	r24, 0x011D
+ 5ec:	81 33       	cpi	r24, 0x31	; 49
+ 5ee:	09 f1       	breq	.+66     	; 0x632 <main+0x178>
+					state = STATE_DOOR_OPEN;
+				} else if(order == '2') {
+ 5f0:	82 33       	cpi	r24, 0x32	; 50
+ 5f2:	09 f1       	breq	.+66     	; 0x636 <main+0x17c>
+					state = STATE_DOOR_CLOSE;
+				} else if(order == '3') {
+ 5f4:	83 33       	cpi	r24, 0x33	; 51
+ 5f6:	09 f0       	breq	.+2      	; 0x5fa <main+0x140>
+ 5f8:	8d cf       	rjmp	.-230    	; 0x514 <main+0x5a>
+					state = STATE_CHANGE_PW;
+ 5fa:	cf 2d       	mov	r28, r15
+ 5fc:	8b cf       	rjmp	.-234    	; 0x514 <main+0x5a>
+				}
+			break;
+			
+			case STATE_WRONG_PW:
+				hmi_lcd_notify(MSG_INVALID_PW);
+ 5fe:	8a e0       	ldi	r24, 0x0A	; 10
+ 600:	91 e0       	ldi	r25, 0x01	; 1
+ 602:	0e 94 bb 00 	call	0x176	; 0x176 <hmi_lcd_notify>
+				state = STATE_ENTER_PW;
+ 606:	c0 2f       	mov	r28, r16
+			break;
+ 608:	85 cf       	rjmp	.-246    	; 0x514 <main+0x5a>
+ 60a:	cd 2f       	mov	r28, r29
+	//3c.				If no -> show error, repeate
+	
+	char state = STATE_FIRST_RUN;
+	char prev_state = '\0';
+	
+	while(state != STATE_SYS_LOCK) {
+ 60c:	d8 3a       	cpi	r29, 0xA8	; 168
+ 60e:	09 f0       	breq	.+2      	; 0x612 <main+0x158>
+ 610:	81 cf       	rjmp	.-254    	; 0x514 <main+0x5a>
+ 612:	13 c0       	rjmp	.+38     	; 0x63a <main+0x180>
+ 614:	c8 3a       	cpi	r28, 0xA8	; 168
+ 616:	09 f0       	breq	.+2      	; 0x61a <main+0x160>
+ 618:	81 cf       	rjmp	.-254    	; 0x51c <main+0x62>
+ 61a:	0f c0       	rjmp	.+30     	; 0x63a <main+0x180>
+		switch(state) {
+			case STATE_FIRST_RUN:
+				if(hmi_check_firstrun()) {
+					state = STATE_CHANGE_PW;
+				} else {
+					state = STATE_ENTER_PW;
+ 61c:	c0 2f       	mov	r28, r16
+ 61e:	7a cf       	rjmp	.-268    	; 0x514 <main+0x5a>
+	
+	while(state != STATE_SYS_LOCK) {
+		switch(state) {
+			case STATE_FIRST_RUN:
+				if(hmi_check_firstrun()) {
+					state = STATE_CHANGE_PW;
+ 620:	cf 2d       	mov	r28, r15
+ 622:	78 cf       	rjmp	.-272    	; 0x514 <main+0x5a>
+			case STATE_CHECK_PW:
+				check_result = check_pw();
+				if(check_result == STATE_CORRECT_PW){
+					state = prev_state != '\0' ? prev_state : STATE_CORRECT_PW;
+				} else if(check_result == STATE_WRONG_PW){
+					state = STATE_WRONG_PW;
+ 624:	c8 2d       	mov	r28, r8
+ 626:	76 cf       	rjmp	.-276    	; 0x514 <main+0x5a>
+ 628:	dc 2f       	mov	r29, r28
+			break;
+			
+			case STATE_CHANGE_PW:
+				if(!hmi_check_firstrun() && prev_state == '\0') {
+					prev_state = state;
+					state = STATE_ENTER_PW;
+ 62a:	c0 2f       	mov	r28, r16
+ 62c:	73 cf       	rjmp	.-282    	; 0x514 <main+0x5a>
+				if(enter_confirm_pw()) {
+					hmi_uart_save_pw(pw);
+					prev_state = '\0';
+					state = STATE_CORRECT_PW;
+				} else {
+					state = STATE_WRONG_CONFIRM_PW;
+ 62e:	cb 2d       	mov	r28, r11
+ 630:	71 cf       	rjmp	.-286    	; 0x514 <main+0x5a>
+			
+			case STATE_CORRECT_PW:
+				hmi_lcd_menu();
+				hmi_keypad_get_order(&order);
+				if(order == '1') {
+					state = STATE_DOOR_OPEN;
+ 632:	ce 2d       	mov	r28, r14
+ 634:	6f cf       	rjmp	.-290    	; 0x514 <main+0x5a>
+				} else if(order == '2') {
+					state = STATE_DOOR_CLOSE;
+ 636:	cd 2d       	mov	r28, r13
+ 638:	6d cf       	rjmp	.-294    	; 0x514 <main+0x5a>
+			break;
+		}
+	}
+	
+	
+}
+ 63a:	80 e0       	ldi	r24, 0x00	; 0
+ 63c:	90 e0       	ldi	r25, 0x00	; 0
+ 63e:	df 91       	pop	r29
+ 640:	cf 91       	pop	r28
+ 642:	1f 91       	pop	r17
+ 644:	0f 91       	pop	r16
+ 646:	ff 90       	pop	r15
+ 648:	ef 90       	pop	r14
+ 64a:	df 90       	pop	r13
+ 64c:	cf 90       	pop	r12
+ 64e:	bf 90       	pop	r11
+ 650:	af 90       	pop	r10
+ 652:	9f 90       	pop	r9
+ 654:	8f 90       	pop	r8
+ 656:	08 95       	ret
+
+00000658 <set_direction_pin>:
+	*port_ptr &= ~value;
+}
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+ 658:	e8 2f       	mov	r30, r24
+ 65a:	f0 e0       	ldi	r31, 0x00	; 0
+#include "include/MCAL.h"
+
+void set_direction_pin(char ddr_address, char pin_no, char dir)
+{
+	volatile char* ddr_ptr = make_pointer(ddr_address);
+	if(dir == 1) {
+ 65c:	41 30       	cpi	r20, 0x01	; 1
+ 65e:	59 f4       	brne	.+22     	; 0x676 <set_direction_pin+0x1e>
+		*ddr_ptr |= 1 << pin_no;
+ 660:	20 81       	ld	r18, Z
+ 662:	81 e0       	ldi	r24, 0x01	; 1
+ 664:	90 e0       	ldi	r25, 0x00	; 0
+ 666:	02 c0       	rjmp	.+4      	; 0x66c <set_direction_pin+0x14>
+ 668:	88 0f       	add	r24, r24
+ 66a:	99 1f       	adc	r25, r25
+ 66c:	6a 95       	dec	r22
+ 66e:	e2 f7       	brpl	.-8      	; 0x668 <set_direction_pin+0x10>
+ 670:	82 2b       	or	r24, r18
+ 672:	80 83       	st	Z, r24
+ 674:	08 95       	ret
+	} else if(dir == 0) {
+ 676:	41 11       	cpse	r20, r1
+ 678:	0b c0       	rjmp	.+22     	; 0x690 <set_direction_pin+0x38>
+		*ddr_ptr &= ~(1 << pin_no);
+ 67a:	20 81       	ld	r18, Z
+ 67c:	81 e0       	ldi	r24, 0x01	; 1
+ 67e:	90 e0       	ldi	r25, 0x00	; 0
+ 680:	02 c0       	rjmp	.+4      	; 0x686 <set_direction_pin+0x2e>
+ 682:	88 0f       	add	r24, r24
+ 684:	99 1f       	adc	r25, r25
+ 686:	6a 95       	dec	r22
+ 688:	e2 f7       	brpl	.-8      	; 0x682 <set_direction_pin+0x2a>
+ 68a:	80 95       	com	r24
+ 68c:	82 23       	and	r24, r18
+ 68e:	80 83       	st	Z, r24
+ 690:	08 95       	ret
+
+00000692 <write_pin>:
+	*port_ptr &= ~value;
+}
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+ 692:	e8 2f       	mov	r30, r24
+ 694:	f0 e0       	ldi	r31, 0x00	; 0
+}
+
+void write_pin(char port_address, char pin_no, char value)
+{
+	volatile char* port_ptr = make_pointer(port_address);
+	if(value == 1) {
+ 696:	41 30       	cpi	r20, 0x01	; 1
+ 698:	59 f4       	brne	.+22     	; 0x6b0 <write_pin+0x1e>
+		*port_ptr |= 1 << pin_no;
+ 69a:	20 81       	ld	r18, Z
+ 69c:	81 e0       	ldi	r24, 0x01	; 1
+ 69e:	90 e0       	ldi	r25, 0x00	; 0
+ 6a0:	02 c0       	rjmp	.+4      	; 0x6a6 <write_pin+0x14>
+ 6a2:	88 0f       	add	r24, r24
+ 6a4:	99 1f       	adc	r25, r25
+ 6a6:	6a 95       	dec	r22
+ 6a8:	e2 f7       	brpl	.-8      	; 0x6a2 <write_pin+0x10>
+ 6aa:	82 2b       	or	r24, r18
+ 6ac:	80 83       	st	Z, r24
+ 6ae:	08 95       	ret
+	} else if(value == 0) {
+ 6b0:	41 11       	cpse	r20, r1
+ 6b2:	0b c0       	rjmp	.+22     	; 0x6ca <write_pin+0x38>
+		*port_ptr &= ~(1 << pin_no);
+ 6b4:	20 81       	ld	r18, Z
+ 6b6:	81 e0       	ldi	r24, 0x01	; 1
+ 6b8:	90 e0       	ldi	r25, 0x00	; 0
+ 6ba:	02 c0       	rjmp	.+4      	; 0x6c0 <write_pin+0x2e>
+ 6bc:	88 0f       	add	r24, r24
+ 6be:	99 1f       	adc	r25, r25
+ 6c0:	6a 95       	dec	r22
+ 6c2:	e2 f7       	brpl	.-8      	; 0x6bc <write_pin+0x2a>
+ 6c4:	80 95       	com	r24
+ 6c6:	82 23       	and	r24, r18
+ 6c8:	80 83       	st	Z, r24
+ 6ca:	08 95       	ret
+
+000006cc <set_direction_port>:
+	*port_ptr &= ~value;
+}
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+ 6cc:	e8 2f       	mov	r30, r24
+ 6ce:	f0 e0       	ldi	r31, 0x00	; 0
+}
+
+void set_direction_port(char ddr_address, char value)
+{
+	volatile char* ddr_ptr = make_pointer(ddr_address);
+	*ddr_ptr = value;
+ 6d0:	60 83       	st	Z, r22
+ 6d2:	08 95       	ret
+
+000006d4 <write_port>:
+	*port_ptr &= ~value;
+}
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+ 6d4:	e8 2f       	mov	r30, r24
+ 6d6:	f0 e0       	ldi	r31, 0x00	; 0
+}
+
+void write_port(char port_address, char value)
+{
+	volatile char* port_ptr = make_pointer(port_address);
+	*port_ptr = value;
+ 6d8:	60 83       	st	Z, r22
+ 6da:	08 95       	ret
+
+000006dc <add_to_port>:
+	*port_ptr &= ~value;
+}
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+ 6dc:	e8 2f       	mov	r30, r24
+ 6de:	f0 e0       	ldi	r31, 0x00	; 0
+}
+
+void add_to_port(char port_address, char value)
+{
+	volatile char* port_ptr = make_pointer(port_address);
+	*port_ptr |= value;
+ 6e0:	80 81       	ld	r24, Z
+ 6e2:	68 2b       	or	r22, r24
+ 6e4:	60 83       	st	Z, r22
+ 6e6:	08 95       	ret
+
+000006e8 <subtract_from_port>:
+	*port_ptr &= ~value;
+}
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+ 6e8:	e8 2f       	mov	r30, r24
+ 6ea:	f0 e0       	ldi	r31, 0x00	; 0
+}
+
+void subtract_from_port(char port_address, char value)
+{
+	volatile char* port_ptr = make_pointer(port_address);
+	*port_ptr &= ~value;
+ 6ec:	80 81       	ld	r24, Z
+ 6ee:	60 95       	com	r22
+ 6f0:	68 23       	and	r22, r24
+ 6f2:	60 83       	st	Z, r22
+ 6f4:	08 95       	ret
+
+000006f6 <make_pointer>:
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+	return ptr;
+ 6f6:	90 e0       	ldi	r25, 0x00	; 0
+ 6f8:	08 95       	ret
+
+000006fa <usart_init>:
+#include "include/USART.h"
+
+void usart_init()
+{
+	//Set baud
+	UBRRH = 0x00;
+ 6fa:	10 bc       	out	0x20, r1	; 32
+	UBRRL = 51;
+ 6fc:	83 e3       	ldi	r24, 0x33	; 51
+ 6fe:	89 b9       	out	0x09, r24	; 9
+	//Enable TX & RX
+	UCSRB |= (1 << TXEN) | (1 << RXEN);
+ 700:	8a b1       	in	r24, 0x0a	; 10
+ 702:	88 61       	ori	r24, 0x18	; 24
+ 704:	8a b9       	out	0x0a, r24	; 10
+
+	//Set parity EVEN
+	UCSRC = (1 << URSEL) | (1 << UPM1);
+ 706:	80 ea       	ldi	r24, 0xA0	; 160
+ 708:	80 bd       	out	0x20, r24	; 32
+	
+	//Set stop bits (2 bits)
+	//UCSRC |= (1 << USBS);
+	
+	//Set data size 8bit
+	UCSRC |= (1 << UCSZ0) | (1 << UCSZ1);
+ 70a:	80 b5       	in	r24, 0x20	; 32
+ 70c:	86 60       	ori	r24, 0x06	; 6
+ 70e:	80 bd       	out	0x20, r24	; 32
+ 710:	08 95       	ret
+
+00000712 <usart_transmit>:
+}
+
+void usart_transmit(unsigned char data)
+{
+	while(! (UCSRA & (1 << UDRE))){}
+ 712:	5d 9b       	sbis	0x0b, 5	; 11
+ 714:	fe cf       	rjmp	.-4      	; 0x712 <usart_transmit>
+	UCSRB &= ~(1 << TXB8);
+ 716:	50 98       	cbi	0x0a, 0	; 10
+	if(data & 0x0100) {
+		UCSRB |= (1 << TXB8);
+	}
+	UDR = data;
+ 718:	8c b9       	out	0x0c, r24	; 12
+ 71a:	08 95       	ret
+
+0000071c <usart_recieve>:
+}
+
+unsigned char usart_recieve()
+{
+	while(! (UCSRA & (1 << RXC))){}
+ 71c:	5f 9b       	sbis	0x0b, 7	; 11
+ 71e:	fe cf       	rjmp	.-4      	; 0x71c <usart_recieve>
+	if ( UCSRA & ((1<<FE)|(1<<DOR)|(1<<PE))){
+ 720:	8b b1       	in	r24, 0x0b	; 11
+ 722:	8c 71       	andi	r24, 0x1C	; 28
+ 724:	19 f4       	brne	.+6      	; 0x72c <usart_recieve+0x10>
+		return -1;
+	}
+	char result_h = (UCSRB & (1 << TXB8));
+ 726:	8a b1       	in	r24, 0x0a	; 10
+	return (result_h << 8) | UDR;
+ 728:	8c b1       	in	r24, 0x0c	; 12
+ 72a:	08 95       	ret
+
+unsigned char usart_recieve()
+{
+	while(! (UCSRA & (1 << RXC))){}
+	if ( UCSRA & ((1<<FE)|(1<<DOR)|(1<<PE))){
+		return -1;
+ 72c:	8f ef       	ldi	r24, 0xFF	; 255
+	}
+	char result_h = (UCSRB & (1 << TXB8));
+	return (result_h << 8) | UDR;
+}
+ 72e:	08 95       	ret
+
+00000730 <__tablejump2__>:
+ 730:	ee 0f       	add	r30, r30
+ 732:	ff 1f       	adc	r31, r31
+ 734:	05 90       	lpm	r0, Z+
+ 736:	f4 91       	lpm	r31, Z
+ 738:	e0 2d       	mov	r30, r0
+ 73a:	09 94       	ijmp
+
+0000073c <_exit>:
+ 73c:	f8 94       	cli
+
+0000073e <__stop_program>:
+ 73e:	ff cf       	rjmp	.-2      	; 0x73e <__stop_program>

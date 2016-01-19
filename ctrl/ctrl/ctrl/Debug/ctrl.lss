@@ -1,0 +1,1026 @@
+
+ctrl.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000004c4  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000538  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000006  00800060  00800060  00000538  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000538  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000568  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000190  00000000  00000000  000005a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000116a  00000000  00000000  00000734  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006fd  00000000  00000000  0000189e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000005f5  00000000  00000000  00001f9b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000338  00000000  00000000  00002590  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000042d  00000000  00000000  000028c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000098d  00000000  00000000  00002cf5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000130  00000000  00000000  00003682  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a6 36       	cpi	r26, 0x66	; 102
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 db 00 	call	0x1b6	; 0x1b6 <main>
+  74:	0c 94 60 02 	jmp	0x4c0	; 0x4c0 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <control_motor>:
+	set_direction_pin(DDR_ADDR(pin_addr), pin_no, 0);
+	return read_pin(pin_addr, pin_no);
+}
+
+void control_motor(char value)
+{
+  7c:	cf 93       	push	r28
+  7e:	c8 2f       	mov	r28, r24
+	set_direction_pin(DDR_ADDR(CONFIG_MOTOR_PORT), CONFIG_MOTOR_PIN_NO, 1);
+  80:	41 e0       	ldi	r20, 0x01	; 1
+  82:	60 e0       	ldi	r22, 0x00	; 0
+  84:	8a e3       	ldi	r24, 0x3A	; 58
+  86:	0e 94 0b 02 	call	0x416	; 0x416 <set_direction_pin>
+	write_pin(PORT_ADDR(CONFIG_MOTOR_PORT), CONFIG_MOTOR_PIN_NO, value);
+  8a:	4c 2f       	mov	r20, r28
+  8c:	60 e0       	ldi	r22, 0x00	; 0
+  8e:	8b e3       	ldi	r24, 0x3B	; 59
+  90:	0e 94 28 02 	call	0x450	; 0x450 <write_pin>
+}
+  94:	cf 91       	pop	r28
+  96:	08 95       	ret
+
+00000098 <control_led>:
+
+void control_led(char value)
+{
+  98:	cf 93       	push	r28
+  9a:	c8 2f       	mov	r28, r24
+	set_direction_pin(DDR_ADDR(CONFIG_MOTOR_PORT), CONFIG_LED_PIN_NO, 1);
+  9c:	41 e0       	ldi	r20, 0x01	; 1
+  9e:	67 e0       	ldi	r22, 0x07	; 7
+  a0:	8a e3       	ldi	r24, 0x3A	; 58
+  a2:	0e 94 0b 02 	call	0x416	; 0x416 <set_direction_pin>
+	write_pin(PORT_ADDR(CONFIG_MOTOR_PORT), CONFIG_LED_PIN_NO, value);
+  a6:	4c 2f       	mov	r20, r28
+  a8:	67 e0       	ldi	r22, 0x07	; 7
+  aa:	8b e3       	ldi	r24, 0x3B	; 59
+  ac:	0e 94 28 02 	call	0x450	; 0x450 <write_pin>
+}
+  b0:	cf 91       	pop	r28
+  b2:	08 95       	ret
+
+000000b4 <ctrl_recieve_data>:
+#include <string.h>
+#include <util/delay.h>
+
+
+void ctrl_recieve_data(unsigned char* container)
+{
+  b4:	0f 93       	push	r16
+  b6:	1f 93       	push	r17
+  b8:	cf 93       	push	r28
+  ba:	df 93       	push	r29
+  bc:	8c 01       	movw	r16, r24
+	char i ;
+	usart_init();
+  be:	0e 94 45 02 	call	0x48a	; 0x48a <usart_init>
+  c2:	e8 01       	movw	r28, r16
+  c4:	0c 5f       	subi	r16, 0xFC	; 252
+  c6:	1f 4f       	sbci	r17, 0xFF	; 255
+	for(i = 0; i < PW_LENGTH; i++) {
+		container[i] = recieve();
+  c8:	0e 94 56 02 	call	0x4ac	; 0x4ac <recieve>
+  cc:	89 93       	st	Y+, r24
+
+void ctrl_recieve_data(unsigned char* container)
+{
+	char i ;
+	usart_init();
+	for(i = 0; i < PW_LENGTH; i++) {
+  ce:	c0 17       	cp	r28, r16
+  d0:	d1 07       	cpc	r29, r17
+  d2:	d1 f7       	brne	.-12     	; 0xc8 <ctrl_recieve_data+0x14>
+		container[i] = recieve();
+	}
+}
+  d4:	df 91       	pop	r29
+  d6:	cf 91       	pop	r28
+  d8:	1f 91       	pop	r17
+  da:	0f 91       	pop	r16
+  dc:	08 95       	ret
+
+000000de <ctrl_recieve_state>:
+
+char ctrl_recieve_state()
+{
+	char state = '\0';
+	usart_init();
+  de:	0e 94 45 02 	call	0x48a	; 0x48a <usart_init>
+	state = recieve();
+  e2:	0e 94 56 02 	call	0x4ac	; 0x4ac <recieve>
+	return state;
+}
+  e6:	08 95       	ret
+
+000000e8 <ctrl_send_state>:
+
+void ctrl_send_state(char state)
+{
+  e8:	cf 93       	push	r28
+  ea:	c8 2f       	mov	r28, r24
+	usart_init();
+  ec:	0e 94 45 02 	call	0x48a	; 0x48a <usart_init>
+	usart_transmit(state);
+  f0:	8c 2f       	mov	r24, r28
+  f2:	0e 94 51 02 	call	0x4a2	; 0x4a2 <usart_transmit>
+}
+  f6:	cf 91       	pop	r28
+  f8:	08 95       	ret
+
+000000fa <ctrl_check_firstrun>:
+
+char ctrl_check_firstrun()
+{
+  fa:	cf 93       	push	r28
+  fc:	df 93       	push	r29
+  fe:	1f 92       	push	r1
+ 100:	cd b7       	in	r28, 0x3d	; 61
+ 102:	de b7       	in	r29, 0x3e	; 62
+	unsigned char firstrun = '\0';
+ 104:	19 82       	std	Y+1, r1	; 0x01
+	read_data(CONFIG_FIRSTRUN_ADDR, &firstrun, 1);
+ 106:	41 e0       	ldi	r20, 0x01	; 1
+ 108:	be 01       	movw	r22, r28
+ 10a:	6f 5f       	subi	r22, 0xFF	; 255
+ 10c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 10e:	84 e0       	ldi	r24, 0x04	; 4
+ 110:	0e 94 dd 01 	call	0x3ba	; 0x3ba <read_data>
+
+	if(firstrun == 0x10) {
+ 114:	81 e0       	ldi	r24, 0x01	; 1
+ 116:	99 81       	ldd	r25, Y+1	; 0x01
+ 118:	90 31       	cpi	r25, 0x10	; 16
+ 11a:	09 f4       	brne	.+2      	; 0x11e <ctrl_check_firstrun+0x24>
+ 11c:	80 e0       	ldi	r24, 0x00	; 0
+		return 0;
+	} else {
+		return 1;
+	}
+}
+ 11e:	0f 90       	pop	r0
+ 120:	df 91       	pop	r29
+ 122:	cf 91       	pop	r28
+ 124:	08 95       	ret
+
+00000126 <ctrl_save_pw>:
+
+void ctrl_save_pw(unsigned char*  container)
+{
+	send_data_array(CONIFG_PW_ADDR, container, PW_LENGTH);
+ 126:	44 e0       	ldi	r20, 0x04	; 4
+ 128:	bc 01       	movw	r22, r24
+ 12a:	80 e0       	ldi	r24, 0x00	; 0
+ 12c:	0e 94 82 01 	call	0x304	; 0x304 <send_data_array>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 130:	2f ef       	ldi	r18, 0xFF	; 255
+ 132:	84 e3       	ldi	r24, 0x34	; 52
+ 134:	9c e0       	ldi	r25, 0x0C	; 12
+ 136:	21 50       	subi	r18, 0x01	; 1
+ 138:	80 40       	sbci	r24, 0x00	; 0
+ 13a:	90 40       	sbci	r25, 0x00	; 0
+ 13c:	e1 f7       	brne	.-8      	; 0x136 <ctrl_save_pw+0x10>
+ 13e:	00 c0       	rjmp	.+0      	; 0x140 <ctrl_save_pw+0x1a>
+ 140:	00 00       	nop
+	_delay_ms(500);
+	send_data(CONFIG_FIRSTRUN_ADDR, 0x10);
+ 142:	60 e1       	ldi	r22, 0x10	; 16
+ 144:	84 e0       	ldi	r24, 0x04	; 4
+ 146:	0e 94 64 01 	call	0x2c8	; 0x2c8 <send_data>
+ 14a:	08 95       	ret
+
+0000014c <ctrl_check_pw>:
+
+}
+
+char ctrl_check_pw(unsigned char* container)
+{
+ 14c:	0f 93       	push	r16
+ 14e:	1f 93       	push	r17
+ 150:	cf 93       	push	r28
+ 152:	df 93       	push	r29
+ 154:	00 d0       	rcall	.+0      	; 0x156 <ctrl_check_pw+0xa>
+ 156:	00 d0       	rcall	.+0      	; 0x158 <ctrl_check_pw+0xc>
+ 158:	cd b7       	in	r28, 0x3d	; 61
+ 15a:	de b7       	in	r29, 0x3e	; 62
+ 15c:	8c 01       	movw	r16, r24
+	char i;
+	unsigned char correct_pw[4];
+	read_data(CONIFG_PW_ADDR, correct_pw, PW_LENGTH);
+ 15e:	44 e0       	ldi	r20, 0x04	; 4
+ 160:	be 01       	movw	r22, r28
+ 162:	6f 5f       	subi	r22, 0xFF	; 255
+ 164:	7f 4f       	sbci	r23, 0xFF	; 255
+ 166:	80 e0       	ldi	r24, 0x00	; 0
+ 168:	0e 94 dd 01 	call	0x3ba	; 0x3ba <read_data>
+	for(i = 0; i < PW_LENGTH; i++)
+	{
+		if(correct_pw[i] != container[i])
+ 16c:	99 81       	ldd	r25, Y+1	; 0x01
+ 16e:	f8 01       	movw	r30, r16
+ 170:	80 81       	ld	r24, Z
+ 172:	98 13       	cpse	r25, r24
+ 174:	14 c0       	rjmp	.+40     	; 0x19e <ctrl_check_pw+0x52>
+ 176:	de 01       	movw	r26, r28
+ 178:	12 96       	adiw	r26, 0x02	; 2
+ 17a:	31 96       	adiw	r30, 0x01	; 1
+ 17c:	0c 5f       	subi	r16, 0xFC	; 252
+ 17e:	1f 4f       	sbci	r17, 0xFF	; 255
+ 180:	9d 91       	ld	r25, X+
+ 182:	81 91       	ld	r24, Z+
+ 184:	98 13       	cpse	r25, r24
+ 186:	0d c0       	rjmp	.+26     	; 0x1a2 <ctrl_check_pw+0x56>
+char ctrl_check_pw(unsigned char* container)
+{
+	char i;
+	unsigned char correct_pw[4];
+	read_data(CONIFG_PW_ADDR, correct_pw, PW_LENGTH);
+	for(i = 0; i < PW_LENGTH; i++)
+ 188:	e0 17       	cp	r30, r16
+ 18a:	f1 07       	cpc	r31, r17
+ 18c:	c9 f7       	brne	.-14     	; 0x180 <ctrl_check_pw+0x34>
+ 18e:	8f e1       	ldi	r24, 0x1F	; 31
+ 190:	9e e4       	ldi	r25, 0x4E	; 78
+ 192:	01 97       	sbiw	r24, 0x01	; 1
+ 194:	f1 f7       	brne	.-4      	; 0x192 <ctrl_check_pw+0x46>
+ 196:	00 c0       	rjmp	.+0      	; 0x198 <ctrl_check_pw+0x4c>
+ 198:	00 00       	nop
+			return 0;
+		}
+	}
+	//Delay to prevent consicutive USART parity error
+	_delay_ms(10);
+	return 1;
+ 19a:	81 e0       	ldi	r24, 0x01	; 1
+ 19c:	03 c0       	rjmp	.+6      	; 0x1a4 <ctrl_check_pw+0x58>
+	for(i = 0; i < PW_LENGTH; i++)
+	{
+		if(correct_pw[i] != container[i])
+		{
+
+			return 0;
+ 19e:	80 e0       	ldi	r24, 0x00	; 0
+ 1a0:	01 c0       	rjmp	.+2      	; 0x1a4 <ctrl_check_pw+0x58>
+ 1a2:	80 e0       	ldi	r24, 0x00	; 0
+		}
+	}
+	//Delay to prevent consicutive USART parity error
+	_delay_ms(10);
+	return 1;
+ 1a4:	0f 90       	pop	r0
+ 1a6:	0f 90       	pop	r0
+ 1a8:	0f 90       	pop	r0
+ 1aa:	0f 90       	pop	r0
+ 1ac:	df 91       	pop	r29
+ 1ae:	cf 91       	pop	r28
+ 1b0:	1f 91       	pop	r17
+ 1b2:	0f 91       	pop	r16
+ 1b4:	08 95       	ret
+
+000001b6 <main>:
+
+int main(void)
+{
+    while (1) 
+    {
+		state = ctrl_recieve_state();
+ 1b6:	0e 94 6f 00 	call	0xde	; 0xde <ctrl_recieve_state>
+ 1ba:	80 93 64 00 	sts	0x0064, r24
+		
+		switch(state)
+ 1be:	82 3a       	cpi	r24, 0xA2	; 162
+ 1c0:	c9 f0       	breq	.+50     	; 0x1f4 <main+0x3e>
+ 1c2:	38 f4       	brcc	.+14     	; 0x1d2 <main+0x1c>
+ 1c4:	80 3a       	cpi	r24, 0xA0	; 160
+ 1c6:	09 f4       	brne	.+2      	; 0x1ca <main+0x14>
+ 1c8:	40 c0       	rjmp	.+128    	; 0x24a <main+0x94>
+ 1ca:	81 3a       	cpi	r24, 0xA1	; 161
+ 1cc:	09 f4       	brne	.+2      	; 0x1d0 <main+0x1a>
+ 1ce:	42 c0       	rjmp	.+132    	; 0x254 <main+0x9e>
+ 1d0:	f2 cf       	rjmp	.-28     	; 0x1b6 <main>
+ 1d2:	89 3a       	cpi	r24, 0xA9	; 169
+ 1d4:	19 f0       	breq	.+6      	; 0x1dc <main+0x26>
+ 1d6:	80 3b       	cpi	r24, 0xB0	; 176
+ 1d8:	b1 f0       	breq	.+44     	; 0x206 <main+0x50>
+ 1da:	ed cf       	rjmp	.-38     	; 0x1b6 <main>
+		{
+			case STATE_FIRST_RUN:
+				if(ctrl_check_firstrun()) {
+ 1dc:	0e 94 7d 00 	call	0xfa	; 0xfa <ctrl_check_firstrun>
+ 1e0:	88 23       	and	r24, r24
+ 1e2:	21 f0       	breq	.+8      	; 0x1ec <main+0x36>
+					ctrl_send_state(STATE_FIRST_RUN_YES);
+ 1e4:	84 eb       	ldi	r24, 0xB4	; 180
+ 1e6:	0e 94 74 00 	call	0xe8	; 0xe8 <ctrl_send_state>
+ 1ea:	e5 cf       	rjmp	.-54     	; 0x1b6 <main>
+				} else {
+					ctrl_send_state(STATE_FIRST_RUN_NO);
+ 1ec:	85 eb       	ldi	r24, 0xB5	; 181
+ 1ee:	0e 94 74 00 	call	0xe8	; 0xe8 <ctrl_send_state>
+ 1f2:	e1 cf       	rjmp	.-62     	; 0x1b6 <main>
+				}
+			break;
+			
+			case STATE_CHANGE_PW:
+				ctrl_recieve_data(pw);
+ 1f4:	80 e6       	ldi	r24, 0x60	; 96
+ 1f6:	90 e0       	ldi	r25, 0x00	; 0
+ 1f8:	0e 94 5a 00 	call	0xb4	; 0xb4 <ctrl_recieve_data>
+				ctrl_save_pw(pw);
+ 1fc:	80 e6       	ldi	r24, 0x60	; 96
+ 1fe:	90 e0       	ldi	r25, 0x00	; 0
+ 200:	0e 94 93 00 	call	0x126	; 0x126 <ctrl_save_pw>
+			break;
+ 204:	d8 cf       	rjmp	.-80     	; 0x1b6 <main>
+			
+			case STATE_CHECK_PW:
+				ctrl_recieve_data(pw);
+ 206:	80 e6       	ldi	r24, 0x60	; 96
+ 208:	90 e0       	ldi	r25, 0x00	; 0
+ 20a:	0e 94 5a 00 	call	0xb4	; 0xb4 <ctrl_recieve_data>
+				if(ctrl_check_pw(pw)) {
+ 20e:	80 e6       	ldi	r24, 0x60	; 96
+ 210:	90 e0       	ldi	r25, 0x00	; 0
+ 212:	0e 94 a6 00 	call	0x14c	; 0x14c <ctrl_check_pw>
+ 216:	88 23       	and	r24, r24
+ 218:	31 f0       	breq	.+12     	; 0x226 <main+0x70>
+					pw_err_counter = 0;
+ 21a:	10 92 65 00 	sts	0x0065, r1
+					ctrl_send_state(STATE_CORRECT_PW);
+ 21e:	85 ea       	ldi	r24, 0xA5	; 165
+ 220:	0e 94 74 00 	call	0xe8	; 0xe8 <ctrl_send_state>
+ 224:	c8 cf       	rjmp	.-112    	; 0x1b6 <main>
+				} else {
+					pw_err_counter++;
+ 226:	80 91 65 00 	lds	r24, 0x0065
+ 22a:	8f 5f       	subi	r24, 0xFF	; 255
+ 22c:	80 93 65 00 	sts	0x0065, r24
+					if(pw_err_counter == 3)
+ 230:	83 30       	cpi	r24, 0x03	; 3
+ 232:	39 f4       	brne	.+14     	; 0x242 <main+0x8c>
+					{
+						control_led(1);
+ 234:	81 e0       	ldi	r24, 0x01	; 1
+ 236:	90 e0       	ldi	r25, 0x00	; 0
+ 238:	0e 94 4c 00 	call	0x98	; 0x98 <control_led>
+						ctrl_send_state(STATE_SYS_LOCK);
+ 23c:	88 ea       	ldi	r24, 0xA8	; 168
+ 23e:	0e 94 74 00 	call	0xe8	; 0xe8 <ctrl_send_state>
+					}
+					ctrl_send_state(STATE_WRONG_PW);
+ 242:	86 ea       	ldi	r24, 0xA6	; 166
+ 244:	0e 94 74 00 	call	0xe8	; 0xe8 <ctrl_send_state>
+ 248:	b6 cf       	rjmp	.-148    	; 0x1b6 <main>
+				}
+			break;
+			
+			case STATE_DOOR_OPEN:
+				control_motor(1);
+ 24a:	81 e0       	ldi	r24, 0x01	; 1
+ 24c:	90 e0       	ldi	r25, 0x00	; 0
+ 24e:	0e 94 3e 00 	call	0x7c	; 0x7c <control_motor>
+			break;
+ 252:	b1 cf       	rjmp	.-158    	; 0x1b6 <main>
+			
+			case STATE_DOOR_CLOSE:
+				control_motor(0);
+ 254:	80 e0       	ldi	r24, 0x00	; 0
+ 256:	90 e0       	ldi	r25, 0x00	; 0
+ 258:	0e 94 3e 00 	call	0x7c	; 0x7c <control_motor>
+			break;
+ 25c:	ac cf       	rjmp	.-168    	; 0x1b6 <main>
+
+0000025e <i2c_read_ack>:
+}
+
+
+char i2c_read_ack()
+{
+	TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWEA);
+ 25e:	84 ec       	ldi	r24, 0xC4	; 196
+ 260:	86 bf       	out	0x36, r24	; 54
+	while(!(TWCR & (1 << TWINT))){}
+ 262:	06 b6       	in	r0, 0x36	; 54
+ 264:	07 fe       	sbrs	r0, 7
+ 266:	fd cf       	rjmp	.-6      	; 0x262 <i2c_read_ack+0x4>
+	return TWDR;
+ 268:	83 b1       	in	r24, 0x03	; 3
+}
+ 26a:	08 95       	ret
+
+0000026c <i2c_read_nack>:
+
+char i2c_read_nack()
+{
+	TWCR = (1 << TWINT) | (1 << TWEN);
+ 26c:	84 e8       	ldi	r24, 0x84	; 132
+ 26e:	86 bf       	out	0x36, r24	; 54
+	while(!(TWCR & (1 << TWINT))){}
+ 270:	06 b6       	in	r0, 0x36	; 54
+ 272:	07 fe       	sbrs	r0, 7
+ 274:	fd cf       	rjmp	.-6      	; 0x270 <i2c_read_nack+0x4>
+	return TWDR;
+ 276:	83 b1       	in	r24, 0x03	; 3
+}
+ 278:	08 95       	ret
+
+0000027a <i2c_check_status>:
+	TWCR = (1 << TWINT) | (1 << TWSTO) | (1 << TWEN);
+}
+
+char i2c_check_status(char status)
+{
+	if((TWSR & 0xf8) == status) {
+ 27a:	21 b1       	in	r18, 0x01	; 1
+ 27c:	28 7f       	andi	r18, 0xF8	; 248
+ 27e:	30 e0       	ldi	r19, 0x00	; 0
+ 280:	48 2f       	mov	r20, r24
+ 282:	50 e0       	ldi	r21, 0x00	; 0
+ 284:	81 e0       	ldi	r24, 0x01	; 1
+ 286:	24 17       	cp	r18, r20
+ 288:	35 07       	cpc	r19, r21
+ 28a:	09 f0       	breq	.+2      	; 0x28e <i2c_check_status+0x14>
+ 28c:	80 e0       	ldi	r24, 0x00	; 0
+		return 1;
+	} else {
+		return 0;
+	}
+ 28e:	08 95       	ret
+
+00000290 <i2c_send_start>:
+	}
+}
+
+char i2c_send_start(char cond)
+{
+	TWCR = (1 << TWSTA) | (1 << TWEN) | (1 << TWINT);
+ 290:	94 ea       	ldi	r25, 0xA4	; 164
+ 292:	96 bf       	out	0x36, r25	; 54
+
+	while(!(TWCR & (1 << TWINT))){}
+ 294:	06 b6       	in	r0, 0x36	; 54
+ 296:	07 fe       	sbrs	r0, 7
+ 298:	fd cf       	rjmp	.-6      	; 0x294 <i2c_send_start+0x4>
+	
+	return i2c_check_status(cond);
+ 29a:	0e 94 3d 01 	call	0x27a	; 0x27a <i2c_check_status>
+
+}
+ 29e:	08 95       	ret
+
+000002a0 <i2c_send_addr>:
+
+char i2c_send_addr(char addr, char cond)
+{
+	TWDR = addr;
+ 2a0:	83 b9       	out	0x03, r24	; 3
+	TWCR = (1 << TWINT) | (1 << TWEN);
+ 2a2:	84 e8       	ldi	r24, 0x84	; 132
+ 2a4:	86 bf       	out	0x36, r24	; 54
+
+
+	while(!(TWCR & (1 << TWINT))){}
+ 2a6:	06 b6       	in	r0, 0x36	; 54
+ 2a8:	07 fe       	sbrs	r0, 7
+ 2aa:	fd cf       	rjmp	.-6      	; 0x2a6 <i2c_send_addr+0x6>
+	
+	return i2c_check_status(cond);
+ 2ac:	86 2f       	mov	r24, r22
+ 2ae:	0e 94 3d 01 	call	0x27a	; 0x27a <i2c_check_status>
+
+}
+ 2b2:	08 95       	ret
+
+000002b4 <i2c_send_data>:
+
+char i2c_send_data(char data, char cond)
+{
+	TWDR = data;
+ 2b4:	83 b9       	out	0x03, r24	; 3
+
+	TWCR = (1 << TWINT) | (1 << TWEN);
+ 2b6:	84 e8       	ldi	r24, 0x84	; 132
+ 2b8:	86 bf       	out	0x36, r24	; 54
+
+
+	while(!(TWCR & (1 << TWINT))){}
+ 2ba:	06 b6       	in	r0, 0x36	; 54
+ 2bc:	07 fe       	sbrs	r0, 7
+ 2be:	fd cf       	rjmp	.-6      	; 0x2ba <i2c_send_data+0x6>
+	
+	return i2c_check_status(cond);
+ 2c0:	86 2f       	mov	r24, r22
+ 2c2:	0e 94 3d 01 	call	0x27a	; 0x27a <i2c_check_status>
+	
+}
+ 2c6:	08 95       	ret
+
+000002c8 <send_data>:
+#include "../HAL/include/HW_TWI.h"
+#include "../MCAL/include/MCAL.h"
+#include "include/I2C.h"
+
+void send_data(char location, char data)
+{
+ 2c8:	cf 93       	push	r28
+ 2ca:	df 93       	push	r29
+ 2cc:	d8 2f       	mov	r29, r24
+ 2ce:	c6 2f       	mov	r28, r22
+	if(i2c_send_start(TW_START))
+ 2d0:	88 e0       	ldi	r24, 0x08	; 8
+ 2d2:	0e 94 48 01 	call	0x290	; 0x290 <i2c_send_start>
+ 2d6:	88 23       	and	r24, r24
+ 2d8:	91 f0       	breq	.+36     	; 0x2fe <send_data+0x36>
+	{
+		if(i2c_send_addr(0xa0, TW_MT_SLA_ACK))
+ 2da:	68 e1       	ldi	r22, 0x18	; 24
+ 2dc:	80 ea       	ldi	r24, 0xA0	; 160
+ 2de:	0e 94 50 01 	call	0x2a0	; 0x2a0 <i2c_send_addr>
+ 2e2:	88 23       	and	r24, r24
+ 2e4:	61 f0       	breq	.+24     	; 0x2fe <send_data+0x36>
+		{
+			i2c_send_data(location, TW_MT_DATA_ACK);
+ 2e6:	68 e2       	ldi	r22, 0x28	; 40
+ 2e8:	8d 2f       	mov	r24, r29
+ 2ea:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <i2c_send_data>
+			if(i2c_send_data(data, TW_MT_DATA_ACK))
+ 2ee:	68 e2       	ldi	r22, 0x28	; 40
+ 2f0:	8c 2f       	mov	r24, r28
+ 2f2:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <i2c_send_data>
+ 2f6:	88 23       	and	r24, r24
+ 2f8:	11 f0       	breq	.+4      	; 0x2fe <send_data+0x36>
+	return TWDR;
+}
+
+void i2c_send_stop()
+{
+	TWCR = (1 << TWINT) | (1 << TWSTO) | (1 << TWEN);
+ 2fa:	84 e9       	ldi	r24, 0x94	; 148
+ 2fc:	86 bf       	out	0x36, r24	; 54
+			{
+				i2c_send_stop();
+			}
+		}
+	}
+}
+ 2fe:	df 91       	pop	r29
+ 300:	cf 91       	pop	r28
+ 302:	08 95       	ret
+
+00000304 <send_data_array>:
+
+void send_data_array(char location, char* data, char length)
+{
+ 304:	ef 92       	push	r14
+ 306:	ff 92       	push	r15
+ 308:	0f 93       	push	r16
+ 30a:	1f 93       	push	r17
+ 30c:	cf 93       	push	r28
+ 30e:	df 93       	push	r29
+ 310:	c8 2f       	mov	r28, r24
+ 312:	7b 01       	movw	r14, r22
+ 314:	14 2f       	mov	r17, r20
+	char i;
+	if(i2c_send_start(TW_START))
+ 316:	88 e0       	ldi	r24, 0x08	; 8
+ 318:	0e 94 48 01 	call	0x290	; 0x290 <i2c_send_start>
+ 31c:	88 23       	and	r24, r24
+ 31e:	f9 f0       	breq	.+62     	; 0x35e <send_data_array+0x5a>
+	{
+		if(i2c_send_addr(0xa0, TW_MT_SLA_ACK))
+ 320:	68 e1       	ldi	r22, 0x18	; 24
+ 322:	80 ea       	ldi	r24, 0xA0	; 160
+ 324:	0e 94 50 01 	call	0x2a0	; 0x2a0 <i2c_send_addr>
+ 328:	88 23       	and	r24, r24
+ 32a:	c9 f0       	breq	.+50     	; 0x35e <send_data_array+0x5a>
+		{
+			i2c_send_data(location, TW_MT_DATA_ACK);
+ 32c:	68 e2       	ldi	r22, 0x28	; 40
+ 32e:	8c 2f       	mov	r24, r28
+ 330:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <i2c_send_data>
+			for(i = 0; i < length; i++) 
+ 334:	11 23       	and	r17, r17
+ 336:	89 f0       	breq	.+34     	; 0x35a <send_data_array+0x56>
+ 338:	e7 01       	movw	r28, r14
+ 33a:	11 50       	subi	r17, 0x01	; 1
+ 33c:	01 2f       	mov	r16, r17
+ 33e:	10 e0       	ldi	r17, 0x00	; 0
+ 340:	0f 5f       	subi	r16, 0xFF	; 255
+ 342:	1f 4f       	sbci	r17, 0xFF	; 255
+ 344:	0e 0d       	add	r16, r14
+ 346:	1f 1d       	adc	r17, r15
+			{
+				if(!i2c_send_data(data[i], TW_MT_DATA_ACK))
+ 348:	68 e2       	ldi	r22, 0x28	; 40
+ 34a:	89 91       	ld	r24, Y+
+ 34c:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <i2c_send_data>
+ 350:	88 23       	and	r24, r24
+ 352:	19 f0       	breq	.+6      	; 0x35a <send_data_array+0x56>
+	if(i2c_send_start(TW_START))
+	{
+		if(i2c_send_addr(0xa0, TW_MT_SLA_ACK))
+		{
+			i2c_send_data(location, TW_MT_DATA_ACK);
+			for(i = 0; i < length; i++) 
+ 354:	c0 17       	cp	r28, r16
+ 356:	d1 07       	cpc	r29, r17
+ 358:	b9 f7       	brne	.-18     	; 0x348 <send_data_array+0x44>
+	return TWDR;
+}
+
+void i2c_send_stop()
+{
+	TWCR = (1 << TWINT) | (1 << TWSTO) | (1 << TWEN);
+ 35a:	84 e9       	ldi	r24, 0x94	; 148
+ 35c:	86 bf       	out	0x36, r24	; 54
+				}
+			}	
+			i2c_send_stop();		
+		}
+	}
+}
+ 35e:	df 91       	pop	r29
+ 360:	cf 91       	pop	r28
+ 362:	1f 91       	pop	r17
+ 364:	0f 91       	pop	r16
+ 366:	ff 90       	pop	r15
+ 368:	ef 90       	pop	r14
+ 36a:	08 95       	ret
+
+0000036c <i2c_receive_data>:
+}
+
+
+
+char i2c_receive_data(unsigned char *ptr, char limit)
+{
+ 36c:	ff 92       	push	r15
+ 36e:	0f 93       	push	r16
+ 370:	1f 93       	push	r17
+ 372:	cf 93       	push	r28
+ 374:	df 93       	push	r29
+ 376:	f8 2e       	mov	r15, r24
+	char i = 0;
+	for(i = 0; i < limit - 1; i++) {
+ 378:	06 2f       	mov	r16, r22
+ 37a:	10 e0       	ldi	r17, 0x00	; 0
+ 37c:	01 50       	subi	r16, 0x01	; 1
+ 37e:	11 09       	sbc	r17, r1
+ 380:	10 16       	cp	r1, r16
+ 382:	11 06       	cpc	r1, r17
+ 384:	64 f4       	brge	.+24     	; 0x39e <i2c_receive_data+0x32>
+ 386:	c8 2f       	mov	r28, r24
+ 388:	d9 2f       	mov	r29, r25
+		*ptr = i2c_read_ack();
+ 38a:	0e 94 2f 01 	call	0x25e	; 0x25e <i2c_read_ack>
+ 38e:	89 93       	st	Y+, r24
+ 390:	2c 2f       	mov	r18, r28
+ 392:	2f 19       	sub	r18, r15
+
+
+char i2c_receive_data(unsigned char *ptr, char limit)
+{
+	char i = 0;
+	for(i = 0; i < limit - 1; i++) {
+ 394:	30 e0       	ldi	r19, 0x00	; 0
+ 396:	20 17       	cp	r18, r16
+ 398:	31 07       	cpc	r19, r17
+ 39a:	bc f3       	brlt	.-18     	; 0x38a <i2c_receive_data+0x1e>
+ 39c:	02 c0       	rjmp	.+4      	; 0x3a2 <i2c_receive_data+0x36>
+ 39e:	c8 2f       	mov	r28, r24
+ 3a0:	d9 2f       	mov	r29, r25
+		*ptr = i2c_read_ack();
+		ptr++;
+	}
+	*ptr = i2c_read_nack();
+ 3a2:	0e 94 36 01 	call	0x26c	; 0x26c <i2c_read_nack>
+ 3a6:	88 83       	st	Y, r24
+	return i2c_check_status(TW_MR_DATA_NACK);
+ 3a8:	88 e5       	ldi	r24, 0x58	; 88
+ 3aa:	0e 94 3d 01 	call	0x27a	; 0x27a <i2c_check_status>
+	
+}
+ 3ae:	df 91       	pop	r29
+ 3b0:	cf 91       	pop	r28
+ 3b2:	1f 91       	pop	r17
+ 3b4:	0f 91       	pop	r16
+ 3b6:	ff 90       	pop	r15
+ 3b8:	08 95       	ret
+
+000003ba <read_data>:
+		}
+	}
+}
+
+void read_data(char location, unsigned char *data_ptr, char length)
+{
+ 3ba:	0f 93       	push	r16
+ 3bc:	1f 93       	push	r17
+ 3be:	cf 93       	push	r28
+ 3c0:	df 93       	push	r29
+ 3c2:	c8 2f       	mov	r28, r24
+ 3c4:	8b 01       	movw	r16, r22
+ 3c6:	d4 2f       	mov	r29, r20
+	if(i2c_send_start(TW_START))
+ 3c8:	88 e0       	ldi	r24, 0x08	; 8
+ 3ca:	0e 94 48 01 	call	0x290	; 0x290 <i2c_send_start>
+ 3ce:	88 23       	and	r24, r24
+ 3d0:	e9 f0       	breq	.+58     	; 0x40c <read_data+0x52>
+	{
+		if(i2c_send_addr(0xa0, TW_MT_SLA_ACK))
+ 3d2:	68 e1       	ldi	r22, 0x18	; 24
+ 3d4:	80 ea       	ldi	r24, 0xA0	; 160
+ 3d6:	0e 94 50 01 	call	0x2a0	; 0x2a0 <i2c_send_addr>
+ 3da:	88 23       	and	r24, r24
+ 3dc:	b9 f0       	breq	.+46     	; 0x40c <read_data+0x52>
+		{
+			i2c_send_data(location, TW_MT_DATA_ACK);
+ 3de:	68 e2       	ldi	r22, 0x28	; 40
+ 3e0:	8c 2f       	mov	r24, r28
+ 3e2:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <i2c_send_data>
+			
+			if(i2c_send_start(TW_REP_START)) {
+ 3e6:	80 e1       	ldi	r24, 0x10	; 16
+ 3e8:	0e 94 48 01 	call	0x290	; 0x290 <i2c_send_start>
+ 3ec:	88 23       	and	r24, r24
+ 3ee:	71 f0       	breq	.+28     	; 0x40c <read_data+0x52>
+				if(i2c_send_data(0xa1, TW_MR_SLA_ACK)) {
+ 3f0:	60 e4       	ldi	r22, 0x40	; 64
+ 3f2:	81 ea       	ldi	r24, 0xA1	; 161
+ 3f4:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <i2c_send_data>
+ 3f8:	88 23       	and	r24, r24
+ 3fa:	41 f0       	breq	.+16     	; 0x40c <read_data+0x52>
+					if(i2c_receive_data(data_ptr, length))
+ 3fc:	6d 2f       	mov	r22, r29
+ 3fe:	c8 01       	movw	r24, r16
+ 400:	0e 94 b6 01 	call	0x36c	; 0x36c <i2c_receive_data>
+ 404:	88 23       	and	r24, r24
+ 406:	11 f0       	breq	.+4      	; 0x40c <read_data+0x52>
+	return TWDR;
+}
+
+void i2c_send_stop()
+{
+	TWCR = (1 << TWINT) | (1 << TWSTO) | (1 << TWEN);
+ 408:	84 e9       	ldi	r24, 0x94	; 148
+ 40a:	86 bf       	out	0x36, r24	; 54
+				}
+			}
+			
+		}
+	}
+}
+ 40c:	df 91       	pop	r29
+ 40e:	cf 91       	pop	r28
+ 410:	1f 91       	pop	r17
+ 412:	0f 91       	pop	r16
+ 414:	08 95       	ret
+
+00000416 <set_direction_pin>:
+	*port_ptr &= ~value;
+}
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+ 416:	e8 2f       	mov	r30, r24
+ 418:	f0 e0       	ldi	r31, 0x00	; 0
+#include "include/MCAL.h"
+
+void set_direction_pin(char ddr_address, char pin_no, char dir)
+{
+	volatile char* ddr_ptr = make_pointer(ddr_address);
+	if(dir == 1) {
+ 41a:	41 30       	cpi	r20, 0x01	; 1
+ 41c:	59 f4       	brne	.+22     	; 0x434 <set_direction_pin+0x1e>
+		*ddr_ptr |= 1 << pin_no;
+ 41e:	20 81       	ld	r18, Z
+ 420:	81 e0       	ldi	r24, 0x01	; 1
+ 422:	90 e0       	ldi	r25, 0x00	; 0
+ 424:	02 c0       	rjmp	.+4      	; 0x42a <set_direction_pin+0x14>
+ 426:	88 0f       	add	r24, r24
+ 428:	99 1f       	adc	r25, r25
+ 42a:	6a 95       	dec	r22
+ 42c:	e2 f7       	brpl	.-8      	; 0x426 <set_direction_pin+0x10>
+ 42e:	82 2b       	or	r24, r18
+ 430:	80 83       	st	Z, r24
+ 432:	08 95       	ret
+	} else if(dir == 0) {
+ 434:	41 11       	cpse	r20, r1
+ 436:	0b c0       	rjmp	.+22     	; 0x44e <set_direction_pin+0x38>
+		*ddr_ptr &= ~(1 << pin_no);
+ 438:	20 81       	ld	r18, Z
+ 43a:	81 e0       	ldi	r24, 0x01	; 1
+ 43c:	90 e0       	ldi	r25, 0x00	; 0
+ 43e:	02 c0       	rjmp	.+4      	; 0x444 <set_direction_pin+0x2e>
+ 440:	88 0f       	add	r24, r24
+ 442:	99 1f       	adc	r25, r25
+ 444:	6a 95       	dec	r22
+ 446:	e2 f7       	brpl	.-8      	; 0x440 <set_direction_pin+0x2a>
+ 448:	80 95       	com	r24
+ 44a:	82 23       	and	r24, r18
+ 44c:	80 83       	st	Z, r24
+ 44e:	08 95       	ret
+
+00000450 <write_pin>:
+	*port_ptr &= ~value;
+}
+
+char* make_pointer(char element_addr)
+{
+	volatile char *ptr = element_addr;
+ 450:	e8 2f       	mov	r30, r24
+ 452:	f0 e0       	ldi	r31, 0x00	; 0
+}
+
+void write_pin(char port_address, char pin_no, char value)
+{
+	volatile char* port_ptr = make_pointer(port_address);
+	if(value == 1) {
+ 454:	41 30       	cpi	r20, 0x01	; 1
+ 456:	59 f4       	brne	.+22     	; 0x46e <write_pin+0x1e>
+		*port_ptr |= 1 << pin_no;
+ 458:	20 81       	ld	r18, Z
+ 45a:	81 e0       	ldi	r24, 0x01	; 1
+ 45c:	90 e0       	ldi	r25, 0x00	; 0
+ 45e:	02 c0       	rjmp	.+4      	; 0x464 <write_pin+0x14>
+ 460:	88 0f       	add	r24, r24
+ 462:	99 1f       	adc	r25, r25
+ 464:	6a 95       	dec	r22
+ 466:	e2 f7       	brpl	.-8      	; 0x460 <write_pin+0x10>
+ 468:	82 2b       	or	r24, r18
+ 46a:	80 83       	st	Z, r24
+ 46c:	08 95       	ret
+	} else if(value == 0) {
+ 46e:	41 11       	cpse	r20, r1
+ 470:	0b c0       	rjmp	.+22     	; 0x488 <write_pin+0x38>
+		*port_ptr &= ~(1 << pin_no);
+ 472:	20 81       	ld	r18, Z
+ 474:	81 e0       	ldi	r24, 0x01	; 1
+ 476:	90 e0       	ldi	r25, 0x00	; 0
+ 478:	02 c0       	rjmp	.+4      	; 0x47e <write_pin+0x2e>
+ 47a:	88 0f       	add	r24, r24
+ 47c:	99 1f       	adc	r25, r25
+ 47e:	6a 95       	dec	r22
+ 480:	e2 f7       	brpl	.-8      	; 0x47a <write_pin+0x2a>
+ 482:	80 95       	com	r24
+ 484:	82 23       	and	r24, r18
+ 486:	80 83       	st	Z, r24
+ 488:	08 95       	ret
+
+0000048a <usart_init>:
+void usart_init()
+{
+	//Set baud
+	//UBRRH = (unsigned char) (6 >> 8);
+	//UBRRL = (unsigned char) 6;
+	UBRRH = 0x00;
+ 48a:	10 bc       	out	0x20, r1	; 32
+	UBRRL = 51;
+ 48c:	83 e3       	ldi	r24, 0x33	; 51
+ 48e:	89 b9       	out	0x09, r24	; 9
+	//Enable TX & RX
+	UCSRB |= (1 << TXEN) | (1 << RXEN);
+ 490:	8a b1       	in	r24, 0x0a	; 10
+ 492:	88 61       	ori	r24, 0x18	; 24
+ 494:	8a b9       	out	0x0a, r24	; 10
+
+	//Set parity EVEN
+	UCSRC = (1 << URSEL) | (1 << UPM1);
+ 496:	80 ea       	ldi	r24, 0xA0	; 160
+ 498:	80 bd       	out	0x20, r24	; 32
+	
+	//Set stop bits (2 bits)
+	//UCSRC |= (1 << USBS);
+	
+	//Set data size 8bit
+	UCSRC |= (1 << UCSZ0) | (1 << UCSZ1);
+ 49a:	80 b5       	in	r24, 0x20	; 32
+ 49c:	86 60       	ori	r24, 0x06	; 6
+ 49e:	80 bd       	out	0x20, r24	; 32
+ 4a0:	08 95       	ret
+
+000004a2 <usart_transmit>:
+}
+
+void usart_transmit(unsigned char data)
+{
+	while(! (UCSRA & (1 << UDRE))){}
+ 4a2:	5d 9b       	sbis	0x0b, 5	; 11
+ 4a4:	fe cf       	rjmp	.-4      	; 0x4a2 <usart_transmit>
+	UCSRB &= ~(1 << TXB8);
+ 4a6:	50 98       	cbi	0x0a, 0	; 10
+	if(data & 0x0100) {
+		UCSRB |= (1 << TXB8);
+	}
+	UDR = data;
+ 4a8:	8c b9       	out	0x0c, r24	; 12
+ 4aa:	08 95       	ret
+
+000004ac <recieve>:
+}
+
+unsigned char recieve()
+{
+	while(! (UCSRA & (1 << RXC))){}
+ 4ac:	5f 9b       	sbis	0x0b, 7	; 11
+ 4ae:	fe cf       	rjmp	.-4      	; 0x4ac <recieve>
+	if ( UCSRA & ((1<<FE)|(1<<DOR)|(1<<PE))){
+ 4b0:	8b b1       	in	r24, 0x0b	; 11
+ 4b2:	8c 71       	andi	r24, 0x1C	; 28
+ 4b4:	19 f4       	brne	.+6      	; 0x4bc <recieve+0x10>
+		return -1;
+	}
+	char result_h = (UCSRB & (1 << TXB8));
+ 4b6:	8a b1       	in	r24, 0x0a	; 10
+	return (result_h << 8) | UDR;
+ 4b8:	8c b1       	in	r24, 0x0c	; 12
+ 4ba:	08 95       	ret
+
+unsigned char recieve()
+{
+	while(! (UCSRA & (1 << RXC))){}
+	if ( UCSRA & ((1<<FE)|(1<<DOR)|(1<<PE))){
+		return -1;
+ 4bc:	8f ef       	ldi	r24, 0xFF	; 255
+	}
+	char result_h = (UCSRB & (1 << TXB8));
+	return (result_h << 8) | UDR;
+}
+ 4be:	08 95       	ret
+
+000004c0 <_exit>:
+ 4c0:	f8 94       	cli
+
+000004c2 <__stop_program>:
+ 4c2:	ff cf       	rjmp	.-2      	; 0x4c2 <__stop_program>
